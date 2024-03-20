@@ -1,0 +1,93 @@
+<Body>
+  <main>
+    <header>
+      <H1 class="h1-header"
+        >Aprendizaje <span class="sp-header">supervisado</span></H1
+      >
+    </header>
+    <button class="btn-cargarDatos">Cargar datos</button>
+    <Article class="container-section">
+      <Section class="sec-prmt">
+        <H2>Parametros de entrada</H2>
+        <Div class="sec-prmt-div">
+          <Div>
+            <p>Numero de entradas:</p>
+            <p>Numero de salidas:</p>
+            <p>Numero de patrones:</p>
+          </Div>
+        </Div>
+      </Section>
+      <Section class="sec-config-RNA">
+        <p><Strong>Configuracion de la Red Neuronal</Strong></p>
+        <p>Funcion de activacion <span>(Limitador)</span></p>
+        <p>Seleccione un algoritmo de entrenamento</p>
+        <div>
+          <button>Algoritmo 1</button>
+          <button>Algoritmo 2</button>
+          <button>Algoritmo 3</button>
+        </div>
+      </Section>
+    </Article>
+  </main>
+</Body>
+
+<style>
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #1a1a1d;
+  }
+
+  main {
+    text-align: center;
+  }
+
+  .h1-header {
+    color: #fff;
+    font-size: 64px;
+    font-weight: 700;
+  }
+
+  .sp-header {
+    color: #c3083f;
+  }
+
+  .btn-cargarDatos {
+    background-color: #4e4e50;
+    font-weight: 500;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    height: 44px;
+    width: 152px;
+    margin-top: 20px;
+  }
+
+  H2,
+  p {
+    color: #fff;
+  }
+
+  .container-section {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .sec-prmt {
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  .sec-prmt-div > Div{
+    background-color: #242426;
+    border-radius: 25px;
+    padding: 15px 30px 15px 30px;
+    text-align: start;
+  }
+
+  .sec-config-RNA > p > strong {
+    font-size: 20px;
+  }
+</style>
