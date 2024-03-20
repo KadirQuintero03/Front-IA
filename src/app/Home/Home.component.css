@@ -1,0 +1,159 @@
+body {
+  margin: 0;
+  width: 100%;
+  background-color: #1a1a1d;
+}
+
+main {
+  text-align: center;
+}
+
+.h1-header {
+  color: #fff;
+  font-size: 64px;
+  font-weight: 700;
+}
+
+.sp-header {
+  color: #c3083f;
+}
+
+.salida {
+  border-radius: 25px;
+}
+
+input[type="file"] {
+  font-weight: 500;
+  border-radius: 50px;
+  width: 152px;
+  margin-top: 20px;
+}
+
+H2,
+p {
+  color: #fff;
+}
+
+.container-section {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  text-align: start;
+  padding: 0 50px 0 100px;
+}
+
+.sec-prmt {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.sec-prmt > p {
+  font-size: 20px;
+}
+
+.sec-prmt > p > span {
+  color: #950741;
+}
+
+input[type="checkbox"]{
+  margin-left: 5px;
+}
+
+.sec-prmt-div > div {
+  background-color: #242426;
+  border-radius: 25px;
+  padding: 15px 30px 15px 30px;
+  margin: 15px 0px 25px 0px;
+}
+
+.div-N {
+  display: flex;
+  align-items: center;
+}
+
+.green,
+.violet,
+.red {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  margin-right: 10px;
+
+  &.green {
+    background-color: #079540;
+  }
+  &.violet {
+    background-color: #44226f;
+  }
+  &.red {
+    background-color: #c3083f;
+  }
+}
+
+.sec-config-RNA > p {
+  font-size: 17px;
+  margin: 10px;
+}
+
+.sec-config-RNA > p > strong {
+  font-size: 22px;
+}
+
+.sec-config-RNA > p > span {
+  color: #c3083f;
+}
+
+.config-RNA-btns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-RNA {
+  border-radius: 50px;
+  background-color: #441525;
+  width: 100px;
+  height: 26px;
+}
+
+.btn-RNA > strong {
+  font-size: 14px;
+  color: #c3083f;
+}
+
+.RNA-prmt-entrenamiento {
+  margin-top: 10px;
+}
+
+.RNA-prmt-entrenamiento > p {
+  font-size: 20px;
+}
+
+.RNA-prmt-entrenamiento > p > span {
+  color: #950741;
+}
+
+.entrenamiento-input {
+  display: flex;
+  align-items: center;
+}
+
+.entrenamiento-input > div {
+  width: 100px;
+  margin: 10px 5px 10px 5px;
+}
+
+.btn-entrena {
+  width: 89px;
+  height: 25px;
+  background-color: #242426;
+  border-radius: 20px;
+}
+
+.sec-config-RNA > button {
+  font: 14px;
+  color: #fff;
+  background-color: #079540;
+  border-radius: 50px;
+  width: 89.44px;
+  height: 27px;
+}
