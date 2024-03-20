@@ -6,7 +6,7 @@
       >
     </header>
     <label class="text-[#fff] block -mb-3 mt-2 text-lg font-bold" for="file_input">Cargar la Data</label>
-    <input type="file" id="file">
+    <input type="file" id="file" (change)="get($event)">
     <Article class="container-section">
       <Section class="sec-prmt">
         <H2>Parametros de entrada</H2>
@@ -14,15 +14,15 @@
           <div class="sec-prmt-div-N">
             <div class="div-N">
               <div class="green"></div>
-              <p>Numero de entradas: 3</p>
+              <p>Numero de entradas: {{entradas}}</p>
             </div>
             <div class="div-N">
               <div class="violet"></div>
-              <p>Numero de salidas: 2</p>
+              <p>Numero de salidas: {{salidas}}</p>
             </div>
             <div class="div-N">
               <div class="red"></div>
-              <p>Numero de patrones: 4</p>
+              <p>Numero de patrones: {{patrones}}</p>
             </div>
           </div>
         </div>
