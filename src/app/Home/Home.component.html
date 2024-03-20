@@ -10,7 +10,14 @@
       for="file_input"
       >Cargar la Data</label
     >
-    <input class="font-medium w-[152px] mt-5 rounded-2xl" type="file" id="file" />
+    <div class="flex justify-center mt-5">
+      <input
+        class="block text-[#C3083F] rounded-lg cursor-pointer bg-[#441525] focus:outline-none"
+        id="file_input"
+        (change)="get($event)"
+        type="file"
+      />
+    </div>
     <Article class="flex mt-5 justify-around text-start pt-0 pr-12 pb-0 pl-24">
       <Section class="text-lg font-medium">
         <H2 class="text-[#fff] font-bold">Parametros de entrada</H2>
@@ -18,20 +25,21 @@
           <div class="sec-prmt-div-N">
             <div class="flex items-center">
               <div class="w-4 h-4 mr-2 rounded-xl bg-[#079540]"></div>
-              <p class="text-[#fff]">Numero de entradas: 3</p>
+              <p class="text-[#fff]">Numero de entradas: {{ entradas }}</p>
             </div>
             <div class="flex items-center">
               <div class="w-4 h-4 mr-2 rounded-xl bg-[#44226f]"></div>
-              <p class="text-[#fff]">Numero de salidas: 2</p>
+              <p class="text-[#fff]">Numero de salidas: {{ salidas }}</p>
             </div>
             <div class="flex items-center">
               <div class="w-4 h-4 mr-2 rounded-xl bg-[#c3083f]"></div>
-              <p class="text-[#fff]">Numero de patrones: 4</p>
+              <p class="text-[#fff]">Numero de patrones: {{ patrones }}</p>
             </div>
           </div>
         </div>
         <p class="text-[#fff]">
-          Inicializar <span class="text-secundary">Pesos (P)</span> y <span class="text-secundary">umbrales (U)</span>
+          Inicializar <span class="text-secundary">Pesos (P)</span> y
+          <span class="text-secundary">umbrales (U)</span>
           <input class="ml-[5px]" type="checkbox" name="" id="" />
         </p>
       </Section>
@@ -43,32 +51,67 @@
           Funcion de activacion <span>(Limitador)</span>
           <input class="ml-[5px]" type="checkbox" name="" id="" />
         </p>
-        <p class="text-[#fff] text-lg m-3">Seleccione un algoritmo de entrenamento</p>
+        <p class="text-[#fff] text-lg m-3">
+          Seleccione un algoritmo de entrenamento
+        </p>
         <div class="flex justify-between">
-          <button class="rounded-3xl bg-[#441525] w-24 h-7 text-primary text-sm"><strong>Algoritmo 1</strong></button>
-          <button class="rounded-3xl bg-[#441525] w-24 h-7 text-primary text-sm"><strong>Algoritmo 2</strong></button>
-          <button class="rounded-3xl bg-[#441525] w-24 h-7 text-primary text-sm"><strong>Algoritmo 3</strong></button>
+          <button
+            class="rounded-3xl bg-[#441525] w-24 h-7 text-primary text-sm"
+          >
+            <strong>Algoritmo 1</strong>
+          </button>
+          <button
+            class="rounded-3xl bg-[#441525] w-24 h-7 text-primary text-sm"
+          >
+            <strong>Algoritmo 2</strong>
+          </button>
+          <button
+            class="rounded-3xl bg-[#441525] w-24 h-7 text-primary text-sm"
+          >
+            <strong>Algoritmo 3</strong>
+          </button>
         </div>
 
         <div class="mt-3">
-          <p class="text-[#fff] text-xl m-3"><span class="text-primary">Parametros</span> de entrenamiento</p>
+          <p class="text-[#fff] text-xl m-3">
+            <span class="text-primary">Parametros</span> de entrenamiento
+          </p>
           <div class="flex items-center">
             <div class="w-28 mx-1 my-3">
               <p class="text-[#fff] text-sm m-3">Numero de iteraciones *</p>
-              <input class="w-[89px] h-[25px] bg-[#242426] rounded-[20px]" type="text" name="" id="" />
+              <input
+                class="w-[89px] h-[25px] bg-[#242426] rounded-[20px]"
+                type="text"
+                name=""
+                id=""
+              />
             </div>
             <div class="w-28 mx-1 my-3">
               <p class="text-[#fff] text-sm m-3">Rata de aprendizaje*</p>
-              <input class="w-[89px] h-[25px] bg-[#242426] rounded-[20px]" type="text" name="" id="" />
+              <input
+                class="w-[89px] h-[25px] bg-[#242426] rounded-[20px]"
+                type="text"
+                name=""
+                id=""
+              />
             </div>
             <div class="w-28 mx-1 my-3">
               <p class="text-[#fff] text-sm m-3">Error maximo permitido*</p>
-              <input class="w-[89px] h-[25px] bg-[#242426] rounded-[20px]" type="text" name="" id="" />
+              <input
+                class="w-[89px] h-[25px] bg-[#242426] rounded-[20px]"
+                type="text"
+                name=""
+                id=""
+              />
             </div>
           </div>
         </div>
         <div class="flex justify-end">
-          <button class="text-base text-[#fff] bg-[#079540] rounded-2xl w-24 h-7"><strong>Entrenar</strong></button>
+          <button
+            class="text-base text-[#fff] bg-[#079540] rounded-2xl w-24 h-7"
+          >
+            <strong>Entrenar</strong>
+          </button>
         </div>
       </Section>
     </Article>
@@ -113,7 +156,9 @@
         <div class="flex justify-between w-[900px]">
           <div>
             <h3 class="text-[#FFFF] text-[20px] font-bold">SALIDA DESEADA</h3>
-            <div class="bg-[#242426] flex justify-center p-4 gap-10 rounded-[25px]">
+            <div
+              class="bg-[#242426] flex justify-center p-4 gap-10 rounded-[25px]"
+            >
               <div class="flex flex-col text-[#FFFF]">
                 <h4 class="text-[#079540] font-bold">MT1</h4>
                 <div>0</div>
@@ -140,7 +185,9 @@
           </div>
           <div>
             <h3 class="text-[#FFFF] text-[20px] font-bold">SALIDA DE LA RED</h3>
-            <div class="bg-[#242426] flex justify-center p-4 gap-10 rounded-[25px]">
+            <div
+              class="bg-[#242426] flex justify-center p-4 gap-10 rounded-[25px]"
+            >
               <div class="flex flex-col text-[#FFFF]">
                 <h4 class="text-primary font-bold">YD1</h4>
                 <div>0</div>
