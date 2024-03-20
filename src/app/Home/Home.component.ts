@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { FileService } from '../services/File.service';
 import {
   ChartComponent,
   ApexAxisChartSeries,
@@ -30,15 +32,19 @@ export type ChartOptions = {
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterModule, NgApexchartsModule],
+  imports: [CommonModule, RouterModule, NgApexchartsModule, HttpClientModule],
   templateUrl: './Home.component.html',
-  styleUrl: './Home.component.css',
+  // styleUrl: './Home.component.css',
 })
 export default class HomeComponent {
   @ViewChild('chart') chart!: ChartComponent;
   public chartOptions: Partial<ChartOptions>;
-
-  constructor() {
+  archivo: File | null = null;
+  entradas = 0;
+  salidas = 0;
+  patrones = 0;
+  data = [];
+  constructor(private prueba: FileService, private http: HttpClient) {
     this.chartOptions = {
       series: [
         {
@@ -282,5 +288,23 @@ export default class HomeComponent {
         },
       },
     };
+  }
+  get(event: any) {
+    this.archivo = event.target.files[0];
+
+    this.prueba.mostrar(this.archivo, this.http).subscribe(
+      (response) => {
+        // Manejar la respuesta del servidor
+       
+        console.log('Respuesta del servidor:', response[0].salidas);
+        this.salidas = response[0].salidas;
+        this.entradas = response[0].entradas;
+        this.patrones = response[0].patrones;
+      },
+      (error) => {
+        // Manejar errores en la solicitud
+        console.error('Error al cargar el archivo:', error);
+      }
+    );
   }
 }
