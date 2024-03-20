@@ -28,14 +28,96 @@
         </div>
       </Section>
     </Article>
+
+    <Article class="">
+      <h3 class="font-bold text-xl text-[#FFFFFF]">Entrenamiento de la red</h3>
+      <div class="w-full flex justify-center">
+        <apx-chart
+          [series]="chartOptions.series!"
+          [chart]="chartOptions.chart!"
+          [xaxis]="chartOptions.xaxis!"
+          [stroke]="chartOptions.stroke!"
+          [tooltip]="chartOptions.tooltip!"
+          [dataLabels]="chartOptions.dataLabels!"
+          [fill]="chartOptions.fill!"
+          [yaxis]="chartOptions.yaxis!"
+          [title]="chartOptions.title!"
+        ></apx-chart>
+        <div class="bg-white ml-10">
+          <div
+            class="bg-[#242426] flex px-4 py-2 font-semibold gap-2 rounded-full"
+          >
+            <div class="text-primary">Iteracion</div>
+            <div class="text-[#FFFFFF]">numero: 1</div>
+          </div>
+          <div
+            class="bg-[#242426] flex px-4 py-2 mt-2 font-semibold gap-2 rounded-full"
+          >
+            <div class="text-primary">Iteracion</div>
+            <div class="text-[#FFFFFF]">numero: 2</div>
+          </div>
+        </div>
+      </div>
+      <h3 class="font-bold text-xl text-[#FFFFFF]">Simulacion</h3>
+
+      <button class="bg-primary hover:bg-primary hover:bg-opacity-90 px-4 mt-4 py-2 rounded-full text-[#FFFF]">
+        Cargar datos de entrenamiento
+      </button>
+      <div class="flex justify-center">
+        <div class="flex justify-between w-[900px]">
+          <div>
+            <h3 class="text-[#FFFF] text-[20px] font-bold">SALIDA DESEADA</h3>
+            <div class="bg-[#242426] flex justify-center p-4 gap-10 salida">
+              <div class="flex flex-col text-[#FFFF]">
+                <h4 class="text-[#079540] font-bold">MT1</h4>
+                <div>0</div>
+                <div>0</div>
+                <div>1</div>
+                <div>1</div>
+              </div>
+
+              <div class="flex flex-col text-[#FFFF]">
+                <h4 class="text-[#079540] font-bold">MT2</h4>
+                <div>0</div>
+                <div>1</div>
+                <div>0</div>
+                <div>1</div>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center">
+            <button class="bg-primary bg-opacity-10 py-2 px-4 hover:bg-primary hover:bg-opacity-30 rounded-full text-primary">
+              Iniciar simulacion
+            </button>
+          </div>
+          <div>
+            <h3 class="text-[#FFFF] text-[20px] font-bold">SALIDA DE LA RED</h3>
+            <div class="bg-[#242426] salida flex justify-center p-4 gap-10">
+              <div class="flex flex-col text-[#FFFF]">
+                <h4 class="text-primary font-bold">YD1</h4>
+                <div>0</div>
+                <div>0</div>
+                <div>1</div>
+                <div>1</div>
+              </div>
+              <div class="flex flex-col text-[#FFFF]">
+                <h4 class="text-primary font-bold">YD2</h4>
+                <div>0</div>
+                <div>1</div>
+                <div>0</div>
+                <div>1</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Article>
   </main>
 </Body>
-
 <style>
   body {
     margin: 0;
     width: 100%;
-    height: 100vh;
     background-color: #1a1a1d;
   }
 
@@ -52,7 +134,9 @@
   .sp-header {
     color: #c3083f;
   }
-
+  .salida {
+    border-radius: 25px;
+  }
   .btn-cargarDatos {
     background-color: #4e4e50;
     font-weight: 500;
@@ -80,7 +164,7 @@
     font-weight: 500;
   }
 
-  .sec-prmt-div > Div{
+  .sec-prmt-div > Div {
     background-color: #242426;
     border-radius: 25px;
     padding: 15px 30px 15px 30px;
