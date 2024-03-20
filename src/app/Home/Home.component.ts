@@ -32,7 +32,7 @@ export type ChartOptions = {
   standalone: true,
   imports: [CommonModule, RouterModule, NgApexchartsModule],
   templateUrl: './Home.component.html',
-  styleUrl: './Home.component.css',
+  //styleUrl: './Home.component.css',
 })
 export default class HomeComponent {
   @ViewChild('chart') chart!: ChartComponent;
