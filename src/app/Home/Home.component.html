@@ -9,23 +9,58 @@
     <Article class="container-section">
       <Section class="sec-prmt">
         <H2>Parametros de entrada</H2>
-        <Div class="sec-prmt-div">
-          <Div>
-            <p>Numero de entradas:</p>
-            <p>Numero de salidas:</p>
-            <p>Numero de patrones:</p>
-          </Div>
-        </Div>
+        <div class="sec-prmt-div">
+          <div class="sec-prmt-div-N">
+            <div class="div-N">
+              <div class="green"></div>
+              <p>Numero de entradas: 3</p>
+            </div>
+            <div class="div-N">
+              <div class="violet"></div>
+              <p>Numero de salidas: 2</p>
+            </div>
+            <div class="div-N">
+              <div class="red"></div>
+              <p>Numero de patrones: 4</p>
+            </div>
+          </div>
+        </div>
+        <p>
+          Inicializar <span>Pesos (P)</span> y <span>umbrales (U)</span>
+          <input type="checkbox" name="" id="" />
+        </p>
       </Section>
       <Section class="sec-config-RNA">
         <p><Strong>Configuracion de la Red Neuronal</Strong></p>
-        <p>Funcion de activacion <span>(Limitador)</span></p>
+        <p>
+          Funcion de activacion <span>(Limitador)</span>
+          <input type="checkbox" name="" id="" />
+        </p>
         <p>Seleccione un algoritmo de entrenamento</p>
-        <div>
-          <button>Algoritmo 1</button>
-          <button>Algoritmo 2</button>
-          <button>Algoritmo 3</button>
+        <div class="config-RNA-btns">
+          <button class="btn-RNA"><strong>Algoritmo 1</strong></button>
+          <button class="btn-RNA"><strong>Algoritmo 2</strong></button>
+          <button class="btn-RNA"><strong>Algoritmo 3</strong></button>
         </div>
+
+        <div class="RNA-prmt-entrenamiento">
+          <p><span>Parametros</span> de entrenamiento</p>
+          <div class="entrenamiento-input">
+            <div>
+              <p>Numero de iteraciones *</p>
+              <input class="btn-entrena" type="text" name="" id="" />
+            </div>
+            <div>
+              <p>Rata de aprendizaje *</p>
+              <input class="btn-entrena" type="text" name="" id="" />
+            </div>
+            <div>
+              <p>Error maximo permitido *</p>
+              <input class="btn-entrena" type="text" name="" id="" />
+            </div>
+          </div>
+        </div>
+        <button><strong>Entrenar</strong></button>
       </Section>
     </Article>
 
@@ -157,6 +192,8 @@
     margin-top: 20px;
     display: flex;
     justify-content: space-around;
+    text-align: start;
+    padding: 0 50px 0 100px;
   }
 
   .sec-prmt {
@@ -164,14 +201,114 @@
     font-weight: 500;
   }
 
-  .sec-prmt-div > Div {
+  .sec-prmt > p {
+    font-size: 20px;
+  }
+
+  .sec-prmt > p > span {
+    color: #950741;
+  }
+
+  input[type="checkbox"]{
+    margin-left: 5px;
+  }
+
+  .sec-prmt-div > div {
     background-color: #242426;
     border-radius: 25px;
     padding: 15px 30px 15px 30px;
-    text-align: start;
+    margin: 15px 0px 25px 0px;
+  }
+
+  .div-N {
+    display: flex;
+    align-items: center;
+  }
+
+  .green,
+  .violet,
+  .red {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    margin-right: 10px;
+
+    &.green {
+      background-color: #079540;
+    }
+    &.violet {
+      background-color: #44226f;
+    }
+    &.red {
+      background-color: #c3083f;
+    }
+  }
+
+  .sec-config-RNA > p {
+    font-size: 17px;
+    margin: 10px;
   }
 
   .sec-config-RNA > p > strong {
+    font-size: 22px;
+  }
+
+  .sec-config-RNA > p > span {
+    color: #c3083f;
+  }
+
+  .config-RNA-btns {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .btn-RNA {
+    border-radius: 50px;
+    background-color: #441525;
+    width: 100px;
+    height: 26px;
+  }
+
+  .btn-RNA > strong {
+    font-size: 14px;
+    color: #c3083f;
+  }
+
+  .RNA-prmt-entrenamiento {
+    margin-top: 10px;
+  }
+
+  .RNA-prmt-entrenamiento > p {
     font-size: 20px;
+  }
+
+  .RNA-prmt-entrenamiento > p > span {
+    color: #950741;
+  }
+
+  .entrenamiento-input {
+    display: flex;
+    align-items: center;
+  }
+
+  .entrenamiento-input > div {
+    width: 100px;
+    margin: 10px 5px 10px 5px;
+  }
+
+  .btn-entrena {
+    width: 89px;
+    height: 25px;
+    background-color: #242426;
+    border-radius: 20px;
+  }
+
+  .sec-config-RNA > button {
+    font: 14px;
+    color: #fff;
+    background-color: #079540;
+    border-radius: 50px;
+    width: 89.44px;
+    height: 27px;
   }
 </style>
