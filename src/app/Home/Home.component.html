@@ -25,16 +25,42 @@
             </div>
           </div>
         </div>
+        <p>
+          Inicializar <span>Pesos (P)</span> y <span>umbrales (U)</span>
+          <input type="checkbox" name="" id="" />
+        </p>
       </Section>
       <Section class="sec-config-RNA">
         <p><Strong>Configuracion de la Red Neuronal</Strong></p>
-        <p>Funcion de activacion <span>(Limitador)</span></p>
+        <p>
+          Funcion de activacion <span>(Limitador)</span>
+          <input type="checkbox" name="" id="" />
+        </p>
         <p>Seleccione un algoritmo de entrenamento</p>
         <div class="config-RNA-btns">
           <button class="btn-RNA"><strong>Algoritmo 1</strong></button>
           <button class="btn-RNA"><strong>Algoritmo 2</strong></button>
           <button class="btn-RNA"><strong>Algoritmo 3</strong></button>
         </div>
+
+        <div class="RNA-prmt-entrenamiento">
+          <p><span>Parametros</span> de entrenamiento</p>
+          <div class="entrenamiento-input">
+            <div>
+              <p>Numero de iteraciones *</p>
+              <input class="btn-entrena" type="text" name="" id="" />
+            </div>
+            <div>
+              <p>Rata de aprendizaje *</p>
+              <input class="btn-entrena" type="text" name="" id="" />
+            </div>
+            <div>
+              <p>Error maximo permitido *</p>
+              <input class="btn-entrena" type="text" name="" id="" />
+            </div>
+          </div>
+        </div>
+        <button><strong>Entrenar</strong></button>
       </Section>
     </Article>
   </main>
@@ -91,13 +117,26 @@
     font-weight: 500;
   }
 
+  .sec-prmt > p {
+    font-size: 20px;
+  }
+
+  .sec-prmt > p > span {
+    color: #950741;
+  }
+
+  input[type="checkbox"]{
+    margin-left: 5px;
+  }
+
   .sec-prmt-div > div {
     background-color: #242426;
     border-radius: 25px;
     padding: 15px 30px 15px 30px;
+    margin: 15px 0px 25px 0px;
   }
 
-  .div-N{
+  .div-N {
     display: flex;
     align-items: center;
   }
@@ -121,13 +160,13 @@
     }
   }
 
-  .sec-config-RNA > p > strong {
-    font-size: 22px;
-  }
-
   .sec-config-RNA > p {
     font-size: 17px;
     margin: 10px;
+  }
+
+  .sec-config-RNA > p > strong {
+    font-size: 22px;
   }
 
   .sec-config-RNA > p > span {
@@ -149,5 +188,43 @@
   .btn-RNA > strong {
     font-size: 14px;
     color: #c3083f;
+  }
+
+  .RNA-prmt-entrenamiento {
+    margin-top: 10px;
+  }
+
+  .RNA-prmt-entrenamiento > p {
+    font-size: 20px;
+  }
+
+  .RNA-prmt-entrenamiento > p > span {
+    color: #950741;
+  }
+
+  .entrenamiento-input {
+    display: flex;
+    align-items: center;
+  }
+
+  .entrenamiento-input > div {
+    width: 100px;
+    margin: 10px 5px 10px 5px;
+  }
+
+  .btn-entrena {
+    width: 89px;
+    height: 25px;
+    background-color: #242426;
+    border-radius: 20px;
+  }
+
+  .sec-config-RNA > button {
+    font: 14px;
+    color: #fff;
+    background-color: #079540;
+    border-radius: 50px;
+    width: 89.44px;
+    height: 27px;
   }
 </style>
