@@ -32,7 +32,7 @@ export default class HomeComponent {
   patrones: number = 0; //Numero de patrones
   entradas: number = 0; //Numero de entradas
   salidas: number = 0; //Numero de salidas
-  data: [] = []; //La Data que se recibe del servidor
+  data: any; //La Data que se recibe del servidor
   w: [] = []; //Pesos
   u: [] = []; //Umbrales
 
@@ -109,7 +109,12 @@ export default class HomeComponent {
         this.salidas = response[0].salidas;
         this.entradas = response[0].entradas;
         this.patrones = response[0].patrones;
-        this.data = response[0].valores;
+        this.w=response[0].W
+        this.u=response[0].U
+        this.data = [
+          { entradasValue: response[0].valoresEntradas },
+          { salidasValue: response[0].valoresSalidas },
+        ];
         console.log('Response: ', response);
       },
       (error) => {
@@ -142,7 +147,7 @@ export default class HomeComponent {
 
     console.log('Algoritmo selec: ', this.algoritmo_selec);
     if (this.algoritmo_selec === 'algoritmo1') {
-      entrenar(this.data, this.variables);
+      entrenar(this.data, this.variables,{w:this.w,u:this.u});
     }
   }
 }

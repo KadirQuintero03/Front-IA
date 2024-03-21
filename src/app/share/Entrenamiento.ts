@@ -1,5 +1,10 @@
 import { variables } from '../interface/variables';
 
-export function entrenar(data: any, Parameters: variables) {
-  console.log(data, Parameters);
+export function entrenar(data: any, Parameters: variables,PyU:any) {
+  console.log("entre");
+  console.log(data, "params",Parameters);
+  console.log("pyu",PyU);
+  
+ 
+  
 }
