@@ -23,31 +23,29 @@ import { GraphicComponent } from '../graphic/graphic.component';
 export default class HomeComponent {
   parameters: variables = new variables();
   algoritmo_selec: String = ''; //Almacena el valor del algoritmo que se selecciono
-  //archivo: File | null = null;
+  archivo: File | null = null;
   patrones: number = 0; //Numero de patrones
   entradas: number = 0; //Numero de entradas
   salidas: number = 0; //Numero de salidas
-  data: [] = []; //La Data que se recibe del servidor
+  data: any; //La Data que se recibe del servidor
   w: [] = []; //Pesos
   u: [] = []; //Umbrales
 
   constructor(private fileServices: FileService, private http: HttpClient) {}
   get(event: any) {
-    //Validamos que se haya seleccionado un archivo.
-    if (!event.target.files || event.target.files.length === 0) {
-      alert('No se ha seleccionado ningún archivo');
-      return;
-    }
 
     //Almacenamos el archivo en una variable.
-    const archivo = event.target.files[0];
+    this.archivo = event.target.files[0];
 
-    this.fileServices.mostrar(archivo, this.http).subscribe(
+    this.fileServices.mostrar(this.archivo, this.http).subscribe(
       (response) => {
         this.salidas = response[0].salidas;
         this.entradas = response[0].entradas;
         this.patrones = response[0].patrones;
-        this.data = response[0].valores;
+        this.data = [
+          {entradasValue: response[0].valoresEntradas},
+          {salidasValue: response[0].valoresSalidas}
+        ];
       },
       (error) => {
         console.error('Error al cargar el archivo:', error);
