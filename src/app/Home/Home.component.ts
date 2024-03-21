@@ -27,7 +27,7 @@ export default class HomeComponent {
   patrones: number = 0; //Numero de patrones
   entradas: number = 0; //Numero de entradas
   salidas: number = 0; //Numero de salidas
-  data: any; //La Data que se recibe del servidor
+  data: any; //La Data que se recibe del servidor 
   w: [] = []; //Pesos
   u: [] = []; //Umbrales
 
@@ -42,10 +42,13 @@ export default class HomeComponent {
         this.salidas = response[0].salidas;
         this.entradas = response[0].entradas;
         this.patrones = response[0].patrones;
+        this.w=response[0].W
+        this.u=response[0].U
         this.data = [
-          {entradasValue: response[0].valoresEntradas},
-          {salidasValue: response[0].valoresSalidas}
+          { entradasValue: response[0].valoresEntradas },
+          { salidasValue: response[0].valoresSalidas },
         ];
+        console.log('Response: ', response);
       },
       (error) => {
         console.error('Error al cargar el archivo:', error);
@@ -79,12 +82,10 @@ export default class HomeComponent {
       return alert('El error maximo debe ser entre un rango de 0 hasta 0.1');
     }
 
-    //Validamos que el algoritmo que se seleccione no sea diferente de 1.
+    console.log('Algoritmo selec: ', this.algoritmo_selec);
     if (this.algoritmo_selec != 'algoritmo1') {
       return alert('Seleccione un algoritmo de entrenamiento valido');
     }
-
-    //Funcion entrenar de entrenamiento.ts
-    entrenar(this.data, this.parameters);
+    entrenar(this.data, this.parameters,{w:this.w,u:this.u});
   }
 }
