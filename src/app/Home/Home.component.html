@@ -57,7 +57,7 @@
         <div class="flex justify-between">
           <button
             class="rounded-3xl bg-[#441525] w-24 h-7 text-primary text-sm"
-            *ngFor="let item of variables.algoritmos"
+            *ngFor="let item of parameters.algoritmos"
             (click)="algoritmo_select(item)"
           >
             <strong>{{ item }}</strong>
@@ -76,7 +76,7 @@
                 type="text"
                 name="num_iteraciones"
                 id="num_iteraciones"
-                [(ngModel)]="variables.num_iteraciones"
+                [(ngModel)]="parameters.num_iteraciones"
               />
             </div>
             <div class="w-28 mx-1 my-3">
@@ -86,7 +86,7 @@
                 type="text"
                 name="rata_aprendizaje"
                 id="rata_aprendizaje"
-                [(ngModel)]="variables.rata_aprendizaje"
+                [(ngModel)]="parameters.rata_aprendizaje"
               />
             </div>
             <div class="w-28 mx-1 my-3">
@@ -96,7 +96,7 @@
                 type="text"
                 name="error_maximo"
                 id="error_maximo"
-                [(ngModel)]="variables.error_maximo"
+                [(ngModel)]="parameters.error_maximo"
               />
             </div>
           </div>
@@ -104,7 +104,7 @@
         <div class="flex justify-end">
           <button
             class="text-base text-[#fff] bg-[#079540] rounded-2xl w-24 h-7"
-            (click)="Entrenar()"
+            (click)="Entrenamiento()"
           >
             <strong>Entrenar</strong>
           </button>
@@ -113,36 +113,8 @@
     </Article>
 
     <Article class="">
-      <h3 class="font-bold text-xl text-[#FFFFFF]">Entrenamiento de la red</h3>
-      <div class="w-full flex justify-center">
-        <apx-chart
-          [series]="chartOptions.series!"
-          [chart]="chartOptions.chart!"
-          [xaxis]="chartOptions.xaxis!"
-          [stroke]="chartOptions.stroke!"
-          [tooltip]="chartOptions.tooltip!"
-          [dataLabels]="chartOptions.dataLabels!"
-          [fill]="chartOptions.fill!"
-          [yaxis]="chartOptions.yaxis!"
-          [title]="chartOptions.title!"
-        ></apx-chart>
-        <div class="bg-white ml-10">
-          <div
-            class="bg-[#242426] flex px-4 py-2 font-semibold gap-2 rounded-full"
-          >
-            <div class="text-primary">Iteracion</div>
-            <div class="text-[#FFFFFF]">numero: 1</div>
-          </div>
-          <div
-            class="bg-[#242426] flex px-4 py-2 mt-2 font-semibold gap-2 rounded-full"
-          >
-            <div class="text-primary">Iteracion</div>
-            <div class="text-[#FFFFFF]">numero: 2</div>
-          </div>
-        </div>
-      </div>
+      <app-graphic/>
       <h3 class="font-bold text-xl text-[#FFFFFF]">Simulacion</h3>
-
       <button
         class="bg-primary hover:bg-primary hover:bg-opacity-90 px-4 mt-4 py-2 rounded-full text-[#FFFF]"
       >
