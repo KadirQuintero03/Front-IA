@@ -1,9 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, Input } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { FileService } from '../services/File.service';
+import { prmts_entrenamiento } from '../interface/prmtsEntrenamiento';
+import { FormsModule, FormControl } from '@angular/forms';
 import {
   ChartComponent,
   ApexAxisChartSeries,
@@ -32,7 +34,7 @@ export type ChartOptions = {
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterModule, NgApexchartsModule, HttpClientModule],
+  imports: [CommonModule, RouterModule, NgApexchartsModule, HttpClientModule, FormsModule],
   templateUrl: './Home.component.html',
   // styleUrl: './Home.component.css',
 })
@@ -44,6 +46,13 @@ export default class HomeComponent {
   salidas = 0;
   patrones = 0;
   data = [];
+  nuevosParametros: prmts_entrenamiento = new prmts_entrenamiento();
+
+  async agregarparametros(){
+    const {num_iteraciones} = this.nuevosParametros
+    console.log(num_iteraciones)
+  }
+
   constructor(private prueba: FileService, private http: HttpClient) {
     this.chartOptions = {
       series: [

@@ -82,8 +82,9 @@
               <input
                 class="w-[89px] h-[25px] bg-[#242426] rounded-[20px]"
                 type="text"
-                name=""
-                id=""
+                name="num_iteraciones"
+                id="num_iteraciones"
+                [(ngModel)]="nuevosParametros.num_iteraciones"
               />
             </div>
             <div class="w-28 mx-1 my-3">
@@ -108,7 +109,7 @@
         </div>
         <div class="flex justify-end">
           <button
-            class="text-base text-[#fff] bg-[#079540] rounded-2xl w-24 h-7"
+            class="text-base text-[#fff] bg-[#079540] rounded-2xl w-24 h-7" (click)="agregarparametros"
           >
             <strong>Entrenar</strong>
           </button>
