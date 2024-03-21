@@ -1,7 +1,7 @@
 <Body class="bg-[#1a1a1d] m-0 w-full p-5">
   <main class="text-center">
     <header>
-      <H1 class="text-[#fff] text-6xl font-bold"
+      <H1 class="text-[white] text-6xl font-bold"
         >Aprendizaje <span class="text-primary">supervisado</span></H1
       >
     </header>
@@ -84,7 +84,7 @@
                 type="text"
                 name="num_iteraciones"
                 id="num_iteraciones"
-                [(ngModel)]="nuevosParametros.num_iteraciones"
+                [(ngModel)]="newParameters.num_iteraciones"
               />
             </div>
             <div class="w-28 mx-1 my-3">
@@ -92,8 +92,9 @@
               <input
                 class="w-[89px] h-[25px] bg-[#242426] rounded-[20px]"
                 type="text"
-                name=""
-                id=""
+                name="rata_aprendizaje"
+                id="rata_aprendizaje"
+                [(ngModel)]="newParameters.rata_aprendizaje"
               />
             </div>
             <div class="w-28 mx-1 my-3">
@@ -101,15 +102,17 @@
               <input
                 class="w-[89px] h-[25px] bg-[#242426] rounded-[20px]"
                 type="text"
-                name=""
-                id=""
+                name="error_maximo"
+                id="error_maximo"
+                [(ngModel)]="newParameters.error_maximo"
               />
             </div>
           </div>
         </div>
         <div class="flex justify-end">
           <button
-            class="text-base text-[#fff] bg-[#079540] rounded-2xl w-24 h-7" (click)="agregarparametros"
+            class="text-base text-[#fff] bg-[#079540] rounded-2xl w-24 h-7"
+            (click)="addParameters()"
           >
             <strong>Entrenar</strong>
           </button>
