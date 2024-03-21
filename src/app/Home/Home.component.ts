@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -21,19 +21,40 @@ import { GraphicComponent } from '../graphic/graphic.component';
   templateUrl: './Home.component.html',
 })
 export default class HomeComponent {
-  parameters: variables = new variables();
   algoritmo_selec: String = ''; //Almacena el valor del algoritmo que se selecciono
-  archivo: File | null = null;
   patrones: number = 0; //Numero de patrones
   entradas: number = 0; //Numero de entradas
   salidas: number = 0; //Numero de salidas
   data: any; //La Data que se recibe del servidor
   w: [] = []; //Pesos
   u: [] = []; //Umbrales
+  archivo: File | null = null;
+  parameters: variables = new variables();
+  @ViewChild('myCanvas', { static: false }) canvasRef!: ElementRef;
+
+  Draw() {
+    // Aquí puedes acceder al elemento Canvas usando this.canvasRef.nativeElement
+    const canvas = this.canvasRef.nativeElement;
+    const ctx = canvas.getContext('2d');
+
+    // Establece el color de trazo en azul
+    ctx.strokeStyle = 'blue';
+
+    //Establece el color de relleno de color azul
+    ctx.fillStyle = 'blue';
+
+    //Establece la opacidad
+    ctx.globalAlpha = 0
+
+    // Ahora puedes dibujar en el Canvas según tus necesidades
+    ctx.beginPath();
+    ctx.moveTo(10, 10); // Punto de inicio
+    ctx.lineTo(100, 50); // Punto final
+    ctx.stroke(); // Dibuja la línea
+  }
 
   constructor(private fileServices: FileService, private http: HttpClient) {}
   get(event: any) {
-
     //Almacenamos el archivo en una variable.
     this.archivo = event.target.files[0];
 
@@ -43,8 +64,8 @@ export default class HomeComponent {
         this.entradas = response[0].entradas;
         this.patrones = response[0].patrones;
         this.data = [
-          {entradasValue: response[0].valoresEntradas},
-          {salidasValue: response[0].valoresSalidas}
+          { entradasValue: response[0].valoresEntradas },
+          { salidasValue: response[0].valoresSalidas },
         ];
       },
       (error) => {
