@@ -57,18 +57,10 @@
         <div class="flex justify-between">
           <button
             class="rounded-3xl bg-[#441525] w-24 h-7 text-primary text-sm"
+            *ngFor="let item of variables.algoritmos"
+            (click)="algoritmo_select(item)"
           >
-            <strong>Algoritmo 1</strong>
-          </button>
-          <button
-            class="rounded-3xl bg-[#441525] w-24 h-7 text-primary text-sm"
-          >
-            <strong>Algoritmo 2</strong>
-          </button>
-          <button
-            class="rounded-3xl bg-[#441525] w-24 h-7 text-primary text-sm"
-          >
-            <strong>Algoritmo 3</strong>
+            <strong>{{ item }}</strong>
           </button>
         </div>
 
@@ -84,7 +76,7 @@
                 type="text"
                 name="num_iteraciones"
                 id="num_iteraciones"
-                [(ngModel)]="newParameters.num_iteraciones"
+                [(ngModel)]="variables.num_iteraciones"
               />
             </div>
             <div class="w-28 mx-1 my-3">
@@ -94,7 +86,7 @@
                 type="text"
                 name="rata_aprendizaje"
                 id="rata_aprendizaje"
-                [(ngModel)]="newParameters.rata_aprendizaje"
+                [(ngModel)]="variables.rata_aprendizaje"
               />
             </div>
             <div class="w-28 mx-1 my-3">
@@ -104,7 +96,7 @@
                 type="text"
                 name="error_maximo"
                 id="error_maximo"
-                [(ngModel)]="newParameters.error_maximo"
+                [(ngModel)]="variables.error_maximo"
               />
             </div>
           </div>
@@ -112,7 +104,7 @@
         <div class="flex justify-end">
           <button
             class="text-base text-[#fff] bg-[#079540] rounded-2xl w-24 h-7"
-            (click)="addParameters()"
+            (click)="Entrenar()"
           >
             <strong>Entrenar</strong>
           </button>
