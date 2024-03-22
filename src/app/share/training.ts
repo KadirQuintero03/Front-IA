@@ -8,37 +8,38 @@ export function entrenar(
   n: number,
   numPatrones: number
 ) {
+  let eit = 1; //Error total de los patrones
+  let cont = 1;
+  let suma = 0; //Salida de la funcion soma
+  let sumaEpatron = 0;
+  var SI = []; //Salidas y1 y2
+  var si: any; //Se aplica la funcion de activacion 0 o 1
+  var error_lineal: any; //Error lineal
+  let error_linealV = []; //Guardamos los errores lineales en un vector
+  let suma_error_lineal = 0; //Suma error lineal
+  let error_patron = []; //Error patron
+  WyU.u = [0.5, 0.3]; //Umbral
   WyU.w = [
     [0.5, 0.8],
     [0.3, -1],
     [0.4, 0],
-  ];
-  let eit = 1;
-  let epatron = [];
-  WyU.u = [0.5, 0.3];
-  let cont = 1;
-  console.log('entradas', data[0].entradasValue[1]);
-  console.log('salidas', data[1].salidasValue[1]);
-  // salida de la red en el primer patron S1=(s1*w11+s2*w21+s3*w31)
-  // salida de la red en el primer patron S2=(s1*w12+s2*w22+s3*w32)
-  let suma = 0;
-  var SI = []; //salidas y1 y2
-  var si: any;
-  var el: any;
-  console.log('error maximo: ', Parameters.error_maximo);
-  // 1            0.05
+  ]; //Pesos
 
-  // 0.5 > 0.05
+// 1 > 0.05
   while (eit > Parameters.error_maximo) {
-    console.log('eit', cont, eit);
+
+    console.log('Cont: ', cont, 'Eit: ', eit); // Imprime Cont: 1 Eit: 1
 
     for (let k = 0; k < n; k++) {
       for (let i = 0; i < n; i++) {
-        console.log('r', data[0]);
+        console.log('Data: ', data[0]); //Imprime todos los patrones de entrada
         for (let j = 0; j < m; j++) {
-          suma = data[0].entradasValue[k][j] * WyU.w[j][i];
+          suma = data[0].entradasValue[k][j] * WyU.w[j][i]; //Salida de la funcion soma
+          console.log(`Entradas ${[j]}: `, data[0].entradasValue[k][j])
+          console.log(`Patron ${[j]}: `, WyU.w[j][i])
+          console.log('Posicion K: ',[k], 'Posicion J: ',[j],'Suma: ', suma);
         }
-        // funcion de activacion
+        // Funcion de activacion y salida atenuada
         if (suma - WyU.u[k] >= 0) {
           si = 1;
         } else {
@@ -47,60 +48,60 @@ export function entrenar(
         // el = data[1].salidasValue[k] - si;//error lineal
       }
       SI.push(si);
-      el = data[1].salidasValue[k];
+      error_lineal = data[1].salidasValue[k];
     }
     console.log('SI:', SI);
     // UMBRALES
     console.log('U1', WyU.u[0]);
     console.log('U2', WyU.u[1]);
-    let eli = [];
-    for (let i = 0; i < 1;i++) {
+
+    for (let i = 0; i < 1; i++) {
       for (let k = 0; k < n; k++) {
-        el = data[1].salidasValue[i][k] - SI[k]; //error lineal en el patron
-        eli.push(el);
+        error_lineal = data[1].salidasValue[i][k] - SI[k]; //error lineal en el patron
+        error_linealV.push(error_lineal);
       }
     }
     cont++;
-    console.log('errores lineales', eli);
-    let sumaeli = 0;
-    for (let i = 0; i < eli.length; i++) {
-      sumaeli += Math.abs(eli[i]); //suma error lineal
+    console.log('Errores lineales: ', error_linealV);
+
+    for (let i = 0; i < error_linealV.length; i++) {
+      suma_error_lineal += Math.abs(error_linealV[i]);
     }
-    console.log('suma errorl', sumaeli);
-    epatron.push(sumaeli / n); //error producido patron 1
-    console.log('ep1', epatron);
+    console.log('Suma error Lineal: ', suma_error_lineal);
+    error_patron.push(suma_error_lineal / n); //error producido patron 1
+    console.log('Error Patron 1', error_patron);
     console.log(SI[0]);
     console.log(data[1].salidasValue[1][0]);
     // aplicando algoritmo de training
     // Wji=Wji +rata*Eli*Xj
-    console.log(WyU.w);
-    console.log('params', Parameters);
 
     for (let i = 0; i < n; i++) {
       for (let j = 0; j < m; j++) {
         let pesoN =
           WyU.w[j][i] +
-          Parameters.rata_aprendizaje * eli[i] * data[1].salidasValue[j][i]; //CALCULANDO PESOS
+          Parameters.rata_aprendizaje *
+            error_linealV[i] *
+            data[1].salidasValue[j][i]; //CALCULANDO PESOS
         // WyU.w = [
         //   [0.5, 0.8],
         //   [0.3, -1],
         //   [0.4, 0],
         // ];
 
-        WyU.w[j][i] = pesoN; //MODIFICANDO PESOS
+        WyU.w[j][i] = pesoN; //Modificando pesos
       }
     }
     for (let i = 0; i < n; i++) {
-      let Unew = WyU.u[i] + Parameters.rata_aprendizaje * eli[i] * 1;
-
+      let Unew = WyU.u[i] + Parameters.rata_aprendizaje * error_linealV[i] * 1;
       WyU.u[i] = Unew;
     }
     console.log('PESO NEW', WyU.w);
     console.log('UMBRAL NEW', WyU.u);
-    let sumaEpatron = 0;
-    for (let i = 0; i < epatron.length; i++) {
-      sumaEpatron += epatron[i];
+
+    for (let i = 0; i < error_patron.length; i++) {
+      sumaEpatron += error_patron[i];
     }
+
     eit = sumaEpatron / numPatrones;
     console.log('ETI', eit);
   }

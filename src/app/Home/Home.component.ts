@@ -35,7 +35,6 @@ export default class HomeComponent {
   @ViewChild('file_input', { static: false }) fileInputRef!: ElementRef;
 
   Draw(): void {
-    // Aquí puedes acceder al elemento Canvas usando this.canvasRef.nativeElement
     const canvas = this.canvasRef.nativeElement;
     const ctx = canvas.getContext('2d');
 
@@ -82,7 +81,6 @@ export default class HomeComponent {
           { salidasValue: response[0].valoresSalidas },
           this.Draw()
         ];
-        console.log('Response: ', response);
       },
       (error) => {
         console.error('Error al cargar el archivo:', error);
