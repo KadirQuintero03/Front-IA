@@ -25,12 +25,15 @@ export default class HomeComponent {
   patrones: number = 0; //Numero de patrones
   entradas: number = 0; //Numero de entradas
   salidas: number = 0; //Numero de salidas
+
   data: any; //La Data que se recibe del servidor
   w: [] = []; //Pesos
   u: [] = []; //Umbrales
+  mostrarsalida: boolean = false;
+  mostrarsalidared: boolean = false;
   archivo: File | null = null;
   parameters: variables = new variables();
-
+  mostrarGrafica: boolean = false;
   @ViewChild('Neurona', { static: false }) canvasRef!: ElementRef;
   @ViewChild('file_input', { static: false }) fileInputRef!: ElementRef;
 
@@ -47,6 +50,7 @@ export default class HomeComponent {
       ctx.arc(50, 50 * (i + 1), 20, 0, 2 * Math.PI); // Dibuja un círculo
       ctx.fill(); // Rellena el círculo
     }
+    console.log('data', this.data);
 
     for (let i = 0; i < this.salidas; i++) {
       ctx.beginPath();
@@ -65,7 +69,7 @@ export default class HomeComponent {
     }
   }
 
-  constructor(private fileServices: FileService, private http: HttpClient) { }
+  constructor(private fileServices: FileService, private http: HttpClient) {}
   get(event: any) {
     //Almacenamos el archivo en una variable.
     this.archivo = event.target.files[0];
@@ -75,19 +79,36 @@ export default class HomeComponent {
         this.salidas = response[0].salidas;
         this.entradas = response[0].entradas;
         this.patrones = response[0].patrones;
-        this.w = response[0].W
-        this.u = response[0].U
+        this.w = response[0].W;
+        this.u = response[0].U;
         this.data = [
           { entradasValue: response[0].valoresEntradas },
           { salidasValue: response[0].valoresSalidas },
-          this.Draw()
+          this.Draw(),
         ];
         console.log('Response: ', response);
+        console.log(this.data[1].salidasValue[0][0]);
       },
       (error) => {
         console.error('Error al cargar el archivo:', error);
       }
     );
+  }
+
+  mostrarSalida() {
+    setTimeout(() => {
+      this.mostrarsalida = true;
+    }, 2000);
+  }
+  mostrarGraficai() {
+    setTimeout(() => {
+      this.mostrarGrafica = true;
+    }, 2000);
+  }
+  mostrarSalidaRed() {
+    setTimeout(() => {
+      this.mostrarsalidared = true;
+    }, 8000);
   }
 
   //Almacenamos el nombre del algoritmo ingresado
@@ -97,6 +118,7 @@ export default class HomeComponent {
 
   //Metodo que llamara a la funcion que ejecutara el algoritmo
   Entrenamiento() {
+    this.mostrarGraficai()
     const { num_iteraciones, rata_aprendizaje, error_maximo } = this.parameters;
 
     // //Validamos que el error maximo permitido no sea menor a 0 ni mayor a 0.1.
@@ -120,6 +142,13 @@ export default class HomeComponent {
     // if (this.algoritmo_selec != 'algoritmo1') {
     //   return alert('Seleccione un algoritmo de entrenamiento valido');
     // }
-    entrenar(this.data, this.parameters, { w: this.w, u: this.u }, this.entradas, this.salidas,this.patrones);
+    entrenar(
+      this.data,
+      this.parameters,
+      { w: this.w, u: this.u },
+      this.entradas,
+      this.salidas,
+      this.patrones
+    );
   }
 }
