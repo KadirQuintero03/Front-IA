@@ -20,46 +20,52 @@ import { GraphicComponent } from '../graphic/graphic.component';
   ],
   templateUrl: './Home.component.html',
 })
-export default class HomeComponent{
+export default class HomeComponent {
   algoritmo_selec: String = ''; //Almacena el valor del algoritmo que se selecciono
   patrones: number = 0; //Numero de patrones
   entradas: number = 0; //Numero de entradas
   salidas: number = 0; //Numero de salidas
-  data: any; //La Data que se recibe del servidor 
+  data: any; //La Data que se recibe del servidor
   w: [] = []; //Pesos
   u: [] = []; //Umbrales
   archivo: File | null = null;
   parameters: variables = new variables();
 
   @ViewChild('Neurona', { static: false }) canvasRef!: ElementRef;
-
-
-
-  ngAfterViewInit(): void {
-    this.Draw();
-  }
+  @ViewChild('file_input', { static: false }) fileInputRef!: ElementRef;
 
   Draw(): void {
     // Aquí puedes acceder al elemento Canvas usando this.canvasRef.nativeElement
     const canvas = this.canvasRef.nativeElement;
     const ctx = canvas.getContext('2d');
 
-    // Establece el color de trazo en azul
-    ctx.strokeStyle = 'blue';
+    ctx.strokeStyle = 'white'; // Establece el color de trazo
+    ctx.fillStyle = 'white'; //Establece el color de relleno
 
-    //Establece el color de relleno de color azul
-    ctx.fillStyle = 'blue';
+    for (let i = 0; i < this.entradas; i++) {
+      ctx.beginPath();
+      ctx.arc(50, 50 * (i + 1), 20, 0, 2 * Math.PI); // Dibuja un círculo
+      ctx.fill(); // Rellena el círculo
+    }
 
-    // Ahora puedes dibujar en el Canvas según tus necesidades
-    ctx.beginPath();
-    ctx.moveTo(10, 10); // Punto de inicio
-    ctx.lineTo(100, 50); // Punto final
-    ctx.stroke(); // Dibuja la línea
+    for (let i = 0; i < this.salidas; i++) {
+      ctx.beginPath();
+      ctx.arc(150, 50 * (i + 1), 20, 0, 2 * Math.PI); // Dibuja un círculo
+      ctx.fill(); // Rellena el círculo
+    }
 
-    console.log('Componente inicializado');
-}
+    // Conecta cada esfera de entrada con cada esfera de salida
+    for (let i = 0; i < this.entradas; i++) {
+      for (let j = 0; j < this.salidas; j++) {
+        ctx.beginPath();
+        ctx.moveTo(50, 50 * (i + 1)); // Punto de inicio en la esfera de entrada
+        ctx.lineTo(150, 50 * (j + 1)); // Punto final en la esfera de salida
+        ctx.stroke(); // Dibuja la línea
+      }
+    }
+  }
 
-  constructor(private fileServices: FileService, private http: HttpClient) {}
+  constructor(private fileServices: FileService, private http: HttpClient) { }
   get(event: any) {
     //Almacenamos el archivo en una variable.
     this.archivo = event.target.files[0];
@@ -69,11 +75,12 @@ export default class HomeComponent{
         this.salidas = response[0].salidas;
         this.entradas = response[0].entradas;
         this.patrones = response[0].patrones;
-        this.w=response[0].W
-        this.u=response[0].U
+        this.w = response[0].W
+        this.u = response[0].U
         this.data = [
           { entradasValue: response[0].valoresEntradas },
           { salidasValue: response[0].valoresSalidas },
+          this.Draw()
         ];
         console.log('Response: ', response);
       },
@@ -113,6 +120,6 @@ export default class HomeComponent{
     // if (this.algoritmo_selec != 'algoritmo1') {
     //   return alert('Seleccione un algoritmo de entrenamiento valido');
     // }
-    entrenar(this.data, this.parameters,{w:this.w,u:this.u},this.entradas,this.salidas);
+    entrenar(this.data, this.parameters, { w: this.w, u: this.u }, this.entradas, this.salidas);
   }
 }

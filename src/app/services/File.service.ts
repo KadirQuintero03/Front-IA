@@ -9,7 +9,7 @@ export class FileService {
   mostrar(archivo: any, http: HttpClient): Observable<any> {
     const formData = new FormData();
     formData.append('file', archivo, archivo.name);
-    const url = 'http://127.0.0.1:8000/file';
+    const url = 'https://txkqr6nh-8000.use.devtunnels.ms/file';
 
     // Retornar el Observable resultante de la solicitud HTTP
     return http.post(url, formData);
