@@ -120,6 +120,6 @@ export default class HomeComponent {
     // if (this.algoritmo_selec != 'algoritmo1') {
     //   return alert('Seleccione un algoritmo de entrenamiento valido');
     // }
-    entrenar(this.data, this.parameters, { w: this.w, u: this.u }, this.entradas, this.salidas);
+    entrenar(this.data, this.parameters, { w: this.w, u: this.u }, this.entradas, this.salidas,this.patrones);
   }
 }
