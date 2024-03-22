@@ -65,27 +65,27 @@ export default class HomeComponent {
   Entrenamiento() {
     const { num_iteraciones, rata_aprendizaje, error_maximo } = this.parameters;
 
-    //Validamos que el error maximo permitido no sea menor a 0 ni mayor a 0.1.
-    if (num_iteraciones <= 0) {
-      return alert('Ingrese un numere de interaciones mayor a 0');
-    }
+    // //Validamos que el error maximo permitido no sea menor a 0 ni mayor a 0.1.
+    // if (num_iteraciones <= 0) {
+    //   return alert('Ingrese un numere de interaciones mayor a 0');
+    // }
 
-    //Validamos que la rata de aprendizaje no sea menor a 0 ni mayor a 1.
-    if (rata_aprendizaje <= 0 || rata_aprendizaje > 1) {
-      return alert(
-        'La rata de aprendizaje no puede ser menor a 0 ni mayor a 1'
-      );
-    }
+    // //Validamos que la rata de aprendizaje no sea menor a 0 ni mayor a 1.
+    // if (rata_aprendizaje <= 0 || rata_aprendizaje > 1) {
+    //   return alert(
+    //     'La rata de aprendizaje no puede ser menor a 0 ni mayor a 1'
+    //   );
+    // }
 
-    //Validamos que el error maximo permitido no sea menor a 0 ni mayor a 0.1.
-    if (error_maximo < 0 || error_maximo > 0.1) {
-      return alert('El error maximo debe ser entre un rango de 0 hasta 0.1');
-    }
+    // //Validamos que el error maximo permitido no sea menor a 0 ni mayor a 0.1.
+    // if (error_maximo < 0 || error_maximo > 0.1) {
+    //   return alert('El error maximo debe ser entre un rango de 0 hasta 0.1');
+    // }
 
-    console.log('Algoritmo selec: ', this.algoritmo_selec);
-    if (this.algoritmo_selec != 'algoritmo1') {
-      return alert('Seleccione un algoritmo de entrenamiento valido');
-    }
-    entrenar(this.data, this.parameters,{w:this.w,u:this.u});
+    // console.log('Algoritmo selec: ', this.algoritmo_selec);
+    // if (this.algoritmo_selec != 'algoritmo1') {
+    //   return alert('Seleccione un algoritmo de entrenamiento valido');
+    // }
+    entrenar(this.data, this.parameters,{w:this.w,u:this.u},this.entradas,this.salidas);
   }
 }
