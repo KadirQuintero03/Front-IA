@@ -31,23 +31,24 @@ export function entrenar(
   // salida de la red en el primer patron S2=(s1*w12+s2*w22+s3*w32)
   console.log('p', WyU.w);
   let suma = 0;
-  let SI = [];
+  var SI = [];
 
-  for (let i = 0; i < n; i++) {
-    for (let j = 0; j < m; j++) {
-      console.log("i",i);
-      
-      // console.log(`peso ${j},${i} `, WyU.w[j][k]);
-      // console.log('S1F', data[0].entradasValue[j][i] * WyU.w[j][i]);
-      suma = data[0].entradasValue[0][j] * WyU.w[j][i];
-      console.log("suma",suma);
-      
-      // console.log(`entrada `, data[0].entradasValue[j][i]);
-      // console.log('S', j, data[0].entradasValue[i][j] * WyU.w[j][i]);
+  for (let k = 0; k < n; k++) {
+    for (let i = 0; i < n; i++) {
+      console.log('r', data[0]);
+      for (let j = 0; j < m; j++) {
+        // console.log("i",i);
+        // console.log(`peso ${j},${i} `, WyU.w[j][k]);
+        // console.log('S1F', data[0].entradasValue[j][i] * WyU.w[j][i]);
+        suma = data[0].entradasValue[k][j] * WyU.w[j][i];
+        // console.log("r2",data[0].entradasValue[i]);
+        // console.log("suma",suma);
+        // console.log(`entrada `, data[0].entradasValue[j][i]);
+        // console.log('S', j, data[0].entradasValue[i][j] * WyU.w[j][i]);
+      }
+      SI.push(suma);
+      // break;
     }
-    SI.push(suma);
-    
-    // break;
   }
 
   console.log('s11 suma', suma);
