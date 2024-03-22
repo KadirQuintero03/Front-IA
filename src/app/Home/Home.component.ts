@@ -20,7 +20,7 @@ import { GraphicComponent } from '../graphic/graphic.component';
   ],
   templateUrl: './Home.component.html',
 })
-export default class HomeComponent {
+export default class HomeComponent{
   algoritmo_selec: String = ''; //Almacena el valor del algoritmo que se selecciono
   patrones: number = 0; //Numero de patrones
   entradas: number = 0; //Numero de entradas
@@ -30,9 +30,16 @@ export default class HomeComponent {
   u: [] = []; //Umbrales
   archivo: File | null = null;
   parameters: variables = new variables();
-  @ViewChild('myCanvas', { static: false }) canvasRef!: ElementRef;
 
-  Draw() {
+  @ViewChild('Neurona', { static: false }) canvasRef!: ElementRef;
+
+
+
+  ngAfterViewInit(): void {
+    this.Draw();
+  }
+
+  Draw(): void {
     // Aquí puedes acceder al elemento Canvas usando this.canvasRef.nativeElement
     const canvas = this.canvasRef.nativeElement;
     const ctx = canvas.getContext('2d');
@@ -43,15 +50,14 @@ export default class HomeComponent {
     //Establece el color de relleno de color azul
     ctx.fillStyle = 'blue';
 
-    //Establece la opacidad
-    ctx.globalAlpha = 0
-
     // Ahora puedes dibujar en el Canvas según tus necesidades
     ctx.beginPath();
     ctx.moveTo(10, 10); // Punto de inicio
     ctx.lineTo(100, 50); // Punto final
     ctx.stroke(); // Dibuja la línea
-  }
+
+    console.log('Componente inicializado');
+}
 
   constructor(private fileServices: FileService, private http: HttpClient) {}
   get(event: any) {
