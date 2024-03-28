@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ChartComponent } from 'ng-apexcharts';
 import { FormsModule } from '@angular/forms';
 import { ChartOptions, yaxis } from '../share/type_Charts';
-import { north, south } from '../share/data_Charts';
+import { north, mostrar, arrayObjetos } from '../share/data_Charts';
 
 @Component({
   selector: 'app-graphic',
@@ -23,17 +23,16 @@ import { north, south } from '../share/data_Charts';
 export class GraphicComponent {
   @ViewChild('chart') chart!: ChartComponent;
   public chartOptions: Partial<ChartOptions>;
+  iteraciones: any;
 
   constructor() {
+    mostrar();
+    this.iteraciones = arrayObjetos;
     this.chartOptions = {
       series: [
         {
-          name: 'north',
-          data: north,
-        },
-        {
-          name: 'south',
-          data: south,
+          name: 'Eli',
+          data: arrayObjetos,
         },
       ],
       chart: {
@@ -57,7 +56,7 @@ export class GraphicComponent {
         },
       },
       xaxis: {
-        type: 'datetime',
+        type: 'numeric',
         axisBorder: {
           show: false,
         },
