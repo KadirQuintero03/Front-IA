@@ -5,8 +5,8 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import { HttpClientModule } from '@angular/common/http';
 import { ChartComponent } from 'ng-apexcharts';
 import { FormsModule } from '@angular/forms';
-import { ChartOptions, yaxis } from '../share/type_Charts';
-import { north, mostrar, arrayObjetos } from '../share/data_Charts';
+import { ChartOptions, yaxis } from '../utils/type_Charts';
+import { north, mostrar, arrayObjetos } from '../utils/data_Charts';
 
 @Component({
   selector: 'app-graphic',
@@ -48,7 +48,7 @@ export class GraphicComponent {
       },
 
       title: {
-        text: 'Area with Negative Values',
+        //text: 'Area with Negative Values',
         align: 'left',
         style: {
           color: 'white',

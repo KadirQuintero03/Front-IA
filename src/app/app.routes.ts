@@ -8,7 +8,7 @@ export const routes: Routes = [
   },
   {
     path: 'home',
-    title: 'home',
+    title: 'Front-IA',
     loadComponent: () => import('./Home/Home.component'),
   }
 ];

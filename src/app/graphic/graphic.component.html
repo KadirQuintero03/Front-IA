@@ -1,4 +1,4 @@
-<h3 class="font-bold text-xl text-[#FFFFFF]">Entrenamiento de la red</h3>
+<h3 class="font-bold text-3xl text-[#FFFFFF] my-4">Entrenamiento de la red</h3>
 <div class="w-full flex justify-center">
   <apx-chart
     [series]="chartOptions.series!"
@@ -15,11 +15,9 @@
     <div
       class="bg-[#242426] flex px-4 py-2 flex-col gap-x-2 font-semibold gap-2 rounded-lg"
     >
-      <div class="text-primary">Iteracion</div>
-      <div class="text-[#FFFFFF]">numero: {{iteraciones[9].x}}</div>
-      <div class="text-primary ml-2">Error iteracion</div>
-      <div class="text-[#FFFFFF]">numero: {{iteraciones[9].y}}</div>
+      <div class="text-primary">Iteracion: <span class="text-[#fff]"> {{iteraciones[9].x}} </span> </div>
+      <div class="text-primary ml-2">Error iteracion: <span class="text-[#fff]"> {{iteraciones[9].y}} </span> </div>
     </div>
-  
+
   </div>
 </div>
