@@ -43,5 +43,5 @@ export function mostrar() {
     };
     arrayObjetos.push(objeto);
   }
-  console.log(arrayObjetos);
+  // console.log(arrayObjetos);
 }

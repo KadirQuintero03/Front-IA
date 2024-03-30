@@ -4,50 +4,52 @@ export function entrenar(
   data: any,
   Parameters: variables,
   WyU: any,
-  m: number,
-  n: number,
+  m: number, //Entradas
+  n: number, //Salidas
   numPatrones: number
 ) {
   WyU.w = [
     [1, 1],
     [0.5, 0.5],
     [0.2, 0.3],
-  ];
+  ]; //Patrones
+  WyU.u = [0, -1]; //Umbrales
+  let funcion_soma = 0; //Salida de la funcion soma
+  let vectorAux: number[] = [];
+  let lista_fs: number[] = [];
+  let funcion_activacion = 0;
 
-  let eit = 1;
-  let epatron = [];
-  WyU.u = [0, -1];
-  let cont = 1;
   console.log('entradas', data[0].entradasValue[1]);
   console.log('salidas', data[1].salidasValue[1]);
-  // salida de la red en el primer patron S1=(s1*w11+s2*w21+s3*w31)
-  // salida de la red en el primer patron S2=(s1*w12+s2*w22+s3*w32)
-  let suma = 0;
-  var SI = []; //salidas y1 y2
-  var si: any;
-  var el: any;
-  let vectorAux: number[] = [];
-  console.log('error maximo: ', Parameters.error_maximo);
-  // 1            0.05
+
   let i = 0;
+
   for (let f = 0; f < numPatrones; f++) {
     for (let c = 0; c < m; c++) {
       vectorAux[i] = data[0].entradasValue[f][c];
       i++;
       //console.log(data[0].entradasValue[f][c])
     }
-    for (let k = 0; k < m; k++) {
-      for (let j = 0; j < n; j++) {
-        suma += vectorAux[k] * WyU.w[k][j];
+    for (let k = 0; k < n; k++) {
+      for (let j = 0; j < m; j++) {
+        funcion_soma += vectorAux[j] * WyU.w[j][k];
+        console.log('Funcion soma: ', funcion_soma);
+        console.log('Vector Auxiliar: ', vectorAux);
+        console.log("Pesos: ",WyU.w[j][k])
       }
+      lista_fs[k] = funcion_soma
+      console.log("Lista fs: ", lista_fs[k])
     }
 
-    console.log(vectorAux);
-    console.log(suma);
+    //YA VENGO VOY A BUSCAR ALGO VAMOS POR BUEN CAMINO dejo el any abierto
+
     vectorAux = [];
     i = 0;
-    suma = 0;
+    funcion_soma = 0;
   }
+//KASDKAJSDJASJD VOY A METERLE VIRU JIJIJI
+// me sali de la llamada ya tu sabes el pq
+
   // 0.5 > 0.05
   // while (eit > Parameters.error_maximo) {
   //   console.log('eit', cont, eit);
