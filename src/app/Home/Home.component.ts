@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, AfterViewInit, ViewChild, ElementRef, inject, Inject } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ElementRef, inject, Inject, output } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { FileService } from '../services/File.service';
 import { variables } from '../interface/variables';
 import { entrenar } from '../utils/training';
-import { GraphicComponent } from '../graphic/graphic.component';
+import { GraphicComponent } from './graphic/graphic.component';
 import PrmtEntrenamientoComponent from './PrmtEntrenamiento/PrmtEntrenamiento/PrmtEntrenamiento.component';
 
 @Component({
@@ -36,6 +36,7 @@ export default class HomeComponent {
   archivo: File | null = null;
   parameters: variables = new variables();
   mostrarGrafica: boolean = false;
+  valueRange: number = 0
 
   constructor(private fileServices: FileService,
     private http: HttpClient,

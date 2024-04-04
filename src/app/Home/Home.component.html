@@ -62,6 +62,15 @@
         Seleccione un algoritmo de entrenamiento
       </p>
       <div class="flex justify-between">
+        <!-- <select name="" id="">
+          <option
+            value=""
+            *ngFor="let item of parameters.algoritmos"
+            (click)="algoritmo_select(item)"
+          >
+            {{ item }}
+          </option>
+        </select> -->
         <button
           class="rounded-3xl bg-[#441525] w-24 h-7 text-primary text-sm"
           *ngFor="let item of parameters.algoritmos"
@@ -85,6 +94,8 @@
               id="num_iteraciones"
               [(ngModel)]="parameters.num_iteraciones"
             />
+              <!-- <input type="range" min="0" max="50" value="0" [(ngModel)]="valueRange">
+              <p class="text-[#fff]">Valor del rango: {{valueRange}}</p> -->
           </div>
           <div class="w-28 mx-1 my-3">
             <p class="text-[#fff] text-sm m-3">Rata de aprendizaje*</p>
