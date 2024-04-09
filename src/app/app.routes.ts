@@ -9,6 +9,6 @@ export const routes: Routes = [
   {
     path: 'home',
     title: 'Front-IA',
-    loadComponent: () => import('./Home/Home.component'),
+    loadComponent: () => import('./home/Home.component'),
   }
 ];

@@ -6,8 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { FileService } from '../services/File.service';
 import { variables } from '../interface/variables';
 import { entrenar } from '../utils/training';
-import { GraphicComponent } from './graphic/graphic.component';
-import PrmtEntrenamientoComponent from './PrmtEntrenamiento/PrmtEntrenamiento/PrmtEntrenamiento.component';
+import { GraphicComponent } from '../home/pages/graphic/graphic.component';
+import PrmtEntrenamientoComponent from '../home/pages/PrmtEntrenamiento/PrmtEntrenamiento/PrmtEntrenamiento.component';
 
 @Component({
   selector: 'app-home',

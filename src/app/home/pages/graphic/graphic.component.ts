@@ -5,8 +5,8 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import { HttpClientModule } from '@angular/common/http';
 import { ChartComponent } from 'ng-apexcharts';
 import { FormsModule } from '@angular/forms';
-import { ChartOptions, yaxis } from '../../utils/type_Charts';
-import { north, mostrar, arrayObjetos } from '../../utils/data_Charts';
+import { ChartOptions, yaxis } from '../../../utils/type_Charts';
+import { north, mostrar, arrayObjetos } from '../../../utils/data_Charts';
 
 @Component({
   selector: 'app-graphic',
