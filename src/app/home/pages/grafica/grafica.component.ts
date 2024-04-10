@@ -18,9 +18,9 @@ import { north, mostrar, arrayObjetos } from '../../../utils/data_Charts';
     HttpClientModule,
     FormsModule,
   ],
-  templateUrl: './graphic.component.html',
+  templateUrl: './grafica.component.html',
 })
-export class GraphicComponent {
+export class graficaComponent {
   @ViewChild('chart') chart!: ChartComponent;
   public chartOptions: Partial<ChartOptions>;
   iteraciones: any;

@@ -1,0 +1,104 @@
+<section class="sec-config-RNA">
+  <p class="text-[#fff] text-xl font-bold m-3">
+    <strong>Configuracion de la Red Neuronal</strong>
+  </p>
+  <p class="text-[#fff] text-lg m-3">
+    Inicializar <span class="text-primary"> Pesos (P) </span> y
+    <span class="text-primary">Umbrales (U)</span>
+    <input class="ml-[5px] cursor-pointer" type="checkbox" name="" id="" />
+  </p>
+  <p class="text-[#fff] text-lg m-3">
+    Habilitar <span>limitador duro</span>
+    <input class="ml-[5px] cursor-pointer" type="checkbox" name="" id="" />
+  </p>
+  <p class="text-[#fff] text-lg m-3">
+    Seleccione un algoritmo de entrenamiento
+  </p>
+  <div class="flex justify-between gap-2">
+    <!-- <select name="" id="">
+        <option
+          value=""
+          *ngFor="let item of parameters.algoritmos"
+          (click)="algoritmo_select(item)"
+        >
+          {{ item }}
+        </option>
+      </select> -->
+    <button
+      class="rounded-3xl bg-[#441525] w-24 h-7 text-primary text-sm"
+      *ngFor="let item of algortimos"
+      (click)="algoritmo_select(item)"
+    >
+      <strong>{{ item }}</strong>
+    </button>
+  </div>
+  <div>
+    <p class="text-[#fff] text-xl ml-3 mt-2">
+      <span class="text-primary">Parametros</span> de entrenamiento
+    </p>
+    <div class="flex items-center -mt-4 gap-5">
+      <div class="w-28 mx-1">
+        <p class="text-[#fff] text-sm m-3">Numero de iteraciones *</p>
+        <!-- <input
+          class="w-[89px] h-[25px] p-2 bg-[#242426] rounded-lg outline-none text-[#FFFF]"
+          type="number"
+          min="0"
+          name="num_iteraciones"
+          id="num_iteraciones"
+          [(ngModel)]="variables.num_iteraciones"
+        /> -->
+        <input
+          type="range"
+          min="0"
+          max="50"
+          value="0"
+          [(ngModel)]="valueRange"
+          [(ngModel)]="variables.num_iteraciones"
+        />
+        <p class="text-[#fff]">Valor del rango: {{ valueRange }}</p>
+      </div>
+      <div class="w-28 mx-1 my-3">
+        <p class="text-[#fff] text-sm m-3">Rata de aprendizaje*</p>
+        <!-- <input
+          class="w-[89px] h-[25px] bg-[#242426] p-2 rounded-lg outline-none text-[#FFFF]"
+          type="number"
+          min="0"
+          name="rata_aprendizaje"
+          id="rata_aprendizaje"
+          [(ngModel)]="variables.rata_aprendizaje"
+        /> -->
+        <input
+          type="range"
+          min="0"
+          max="50"
+          value="0"
+          [(ngModel)]="rangoRata"
+          [(ngModel)]="variables.rata_aprendizaje"
+        />
+        <p class="text-[#fff]">Valor del rango: {{ rangoRata }}</p>
+      </div>
+      <div class="w-28 mx-1 my-3">
+        <p class="text-[#fff] text-sm m-3">Error maximo permitido*</p>
+        <!-- <input
+          class="w-[89px] h-[25px] bg-[#242426] p-2 rounded-lg outline-none text-[#FFFF]"
+          type="number"
+          min="0"
+          name="error_maximo"
+          id="error_maximo"
+          [(ngModel)]="variables.error_maximo"
+        /> -->
+        <input
+          type="range"
+          min="0"
+          max="1"
+          value="0"
+          step="0.01"
+          [(ngModel)]="rangoError"
+          [(ngModel)]="variables.error_maximo"
+        />
+        <p class="text-[#fff]">Valor del rango: {{ rangoError }}</p>
+      </div>
+    </div>
+  </div>
+
+</section>
