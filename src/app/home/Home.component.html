@@ -1,9 +1,6 @@
 <main class="text-center">
-  <header>
-    <h1 class="text-[white] text-6xl font-bold">
-      Aprendizaje <span class="text-primary">supervisado</span>
-    </h1>
-  </header>
+  <app-header/>
+
   <label class="text-[#fff] block -mb-3 mt-6 text-lg font-bold" for="file_input"
     >Cargar la Data</label
   >
@@ -22,18 +19,19 @@
     <app-config-rna />
   </article>
 
-  <div class="flex justify-start mt-2">
-    <button
-      class="text-base text-[#fff] bg-[#079540] rounded-2xl w-24 h-7"
-      (click)="probar()"
-    >
-      <strong>Entrenar</strong>
-    </button>
+  <div class="flex mt-2 w-full justify-center items-center">
+    <div>
+      <button
+        class="text-base text-[#fff] bg-[#079540] rounded-full p-2"
+        (click)="probar()"
+      >
+        <strong>Entrenar</strong>
+      </button>
+    </div>
   </div>
 
   <article>
     <app-graphic />
-    
-    <app-simulacion/>
+    <app-simulacion />
   </article>
 </main>

@@ -12,15 +12,9 @@ import { entrenar } from '../../../utils/algoritmo01';
   styleUrl: './configRNA.component.css',
 })
 export class ConfigRNAComponent {
-  algoritmo_selec: String = ''; //Almacena el valor del algoritmo que se selecciono
-  algortimos: string[] = [
-    'Algortimo 1',
-    'Algoritmo 2',
-    'Algoritmo 3',
-    'algoritmo 4',
-  ];
+
   algoritmo_select(nom_algoritmo: String) {
-    this.algoritmo_selec = nom_algoritmo;
+    this.variables.algoritmo_selec = nom_algoritmo;
   }
   valueRange: number = 0;
   rangoError: number = 0;
@@ -29,10 +23,7 @@ export class ConfigRNAComponent {
 
   Entrenamiento() {
     console.log(this.variables);
-    console.log('entrenar aqui', this.algoritmo_selec);
-
-
-
+    console.log('entrenar aqui', this.variables.algoritmo_selec);
 
     const { num_iteraciones, rata_aprendizaje, error_maximo } = this.variables;
 
@@ -58,13 +49,13 @@ export class ConfigRNAComponent {
     //   return alert('Seleccione un algoritmo de entrenamiento valido');
     // }
 
-    entrenar(
-      this.variables.data,
-      this.variables,
-      { w: this.variables.w, u: this.variables.u },
-      this.variables.entradas,
-      this.variables.salidas,
-      this.variables.patrones
-    );
+    // entrenar(
+    //   this.variables.data,
+    //   this.variables,
+    //   { w: this.variables.w, u: this.variables.u },
+    //   this.variables.entradas,
+    //   this.variables.salidas,
+    //   this.variables.patrones
+    // );
   }
 }

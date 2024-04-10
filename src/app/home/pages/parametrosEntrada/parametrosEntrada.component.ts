@@ -25,15 +25,8 @@ import { entrenar } from '../../../utils/algoritmo01';
 })
 export class ParametrosEntradaComponent {
   algoritmo_selec: String = ''; //Almacena el valor del algoritmo que se selecciono
-  // patrones: number = 0; //Numero de patrones
-  // entradas: number = 0; //Numero de entradas
-  // salidas: number = 0; //Numero de salidas
-  data: any; //La Data que se recibe del servidor
-  w: [] = []; //Pesos
-  u: [] = []; //Umbrales
   mostrarsalida: boolean = false;
   mostrarsalidared: boolean = false;
-  archivo: File | null = null;
   variables: variables = new variables();
   mostrarGrafica: boolean = false;
   valueRange: number = 0;
@@ -54,7 +47,8 @@ export class ParametrosEntradaComponent {
       ctx.arc(50, 50 * (i + 1), 20, 0, 2 * Math.PI); // Dibuja un círculo
       ctx.fill(); // Rellena el círculo
     }
-    console.log('data', this.data);
+
+    console.log('data', this.variables.data);
 
     for (let i = 0; i < this.variables.salidas; i++) {
       ctx.beginPath();
@@ -75,23 +69,24 @@ export class ParametrosEntradaComponent {
 
   get(event: any) {
     //Almacenamos el archivo en una variable.
-    this.archivo = event.target.files[0];
+    this.variables.archivo = event.target.files[0];
 
-    this.fileServices.mostrar(this.archivo, this.http).subscribe(
+    this.fileServices.mostrar(this.variables.archivo, this.http).subscribe(
       (response) => {
         this.variables.salidas = response[0].numSalidas;
         this.variables.entradas = response[0].numEntradas;
         this.variables.patrones = response[0].numPatrones;
         this.variables.w = response[0].W;
         this.variables.u = response[0].U;
-        this.variables.data = [
-          { salidas: response[0].salidas },
-          { entradas: response[0].entradas },
-          this.Draw(),
-        ];
-        console.log("w: ",this.variables.w);
-        console.log("u: ",this.variables.u);
-        console.log("data: ",this.variables.data);
+        this.variables.data = {
+          salidas: response[0].salidas,
+          entradas: response[0].entradas,
+        };
+        //{ entradas: response[0].entradas },
+        this.Draw();
+        console.log('w: ', this.variables.w);
+        console.log('u: ', this.variables.u);
+        console.log('data: ', this.variables.data);
         // console.log('Response: ', response);
         // console.log('EntradasValue:', this.data[1].entradas);
         // console.log('SalidasValue: ', this.data[0].salidas);

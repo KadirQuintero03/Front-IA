@@ -24,13 +24,15 @@
           {{ item }}
         </option>
       </select> -->
-    <button
+
+    <!-- <button
       class="rounded-3xl bg-[#441525] w-24 h-7 text-primary text-sm"
-      *ngFor="let item of algortimos"
+      ngFor="let item of algortimos"
       (click)="algoritmo_select(item)"
     >
       <strong>{{ item }}</strong>
-    </button>
+    </button> -->
+    
   </div>
   <div>
     <p class="text-[#fff] text-xl ml-3 mt-2">
@@ -70,8 +72,9 @@
         <input
           type="range"
           min="0"
-          max="50"
+          max="1"
           value="0"
+          step="0.01"
           [(ngModel)]="rangoRata"
           [(ngModel)]="variables.rata_aprendizaje"
         />

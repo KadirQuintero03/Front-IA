@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, Injectable } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { HttpClientModule } from '@angular/common/http';
@@ -20,6 +20,11 @@ import { north, mostrar, arrayObjetos } from '../../../utils/data_Charts';
   ],
   templateUrl: './grafica.component.html',
 })
+
+@Injectable({
+  providedIn: 'root', // Esto proporciona la instancia globalmente
+})
+
 export class graficaComponent {
   @ViewChild('chart') chart!: ChartComponent;
   public chartOptions: Partial<ChartOptions>;
