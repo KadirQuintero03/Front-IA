@@ -1,13 +1,15 @@
 // import { Data, FuncionParametro } from "../interfaces/interfaceData";
+import { HttpClient } from "@angular/common/http";
 import {Data} from "../interface/variables"
 import { generarValoresAleatorios } from "../libs/generarWyU";
 import { GuardarPesos } from "../libs/guardarPesos";
-
+import { FileService } from "../services/File.service";
 export function entrenar(
   data: Data,
   rata: number,
   erroMaximoPer: number,
-  num_Iteraciones: number
+  num_Iteraciones: number,
+  // servicio:FileService
 ) {
   console.log("Data algoritmo: ", data)
   const { entradas, salidas, numEntradas, numSalidas, numPatrones } = data;

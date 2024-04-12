@@ -12,14 +12,23 @@ import { entrenar } from '../../../utils/algoritmo01';
   styleUrl: './configRNA.component.css',
 })
 export class ConfigRNAComponent {
-
-  algoritmo_select(nom_algoritmo: String) {
-    this.variables.algoritmo_selec = nom_algoritmo;
-  }
-  valueRange: number = 0;
-  rangoError: number = 0;
-  rangoRata:number=0;
   variables: variables = new variables();
+  capa_selec: number = 1; // Almacenara el valor del select
+  num_capa: any[] = []; // Contendra un N°Elemento según el valor que se seleccione en el select
+
+  //Declaramos el metodo que actualizara el N°Elemento de mum_capa
+  //Lo llamamos en el select del HTML
+  actualizarLista(): void {
+    this.num_capa = 
+    //Crea un nuevo arreglo basado en el objeto iterable que se proporcione.
+    Array.from({
+      //Proporciona la longitud que tendra el nuevo arreglo
+      length: this.capa_selec }, 
+      //Funcion de mappeo
+    (index_value) => index_value);
+
+    console.log(this.num_capa)
+  }
 
   Entrenamiento() {
     console.log(this.variables);

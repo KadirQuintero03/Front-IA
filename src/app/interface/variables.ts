@@ -1,5 +1,5 @@
 //variables globales
-export class variables{
+export class variables {
   num_iteraciones: number = 0; //Numero de iteraciones -> Ingresa el usuario -> Condicion de parada secundaria
   rata_aprendizaje: number = 0; //Rata de aprendizaje -> Ingresa el usuario
   error_maximo: number = 0; //Error maximo permitido -> Ingresa el usuario -> Condicion de parada principal
@@ -12,9 +12,14 @@ export class variables{
   u: [] = []; //Umbrales -> Backend
   data: any; //La Data que se recibe del servidor
 
-  algoritmos: String[] = ['Algoritmo1', 'Algoritmo2', 'Algoritmo3']; //Algoritmos disponibles
-  algoritmo_selec: String = ''; //Almacena el valor del algoritmo seleccionado
+  algoritmos: String[] = ['Limitador Duro', 'Backpropagation', 'Proximamente']; //Algoritmos disponibles
+  algoritmo_selec: String = 'Limitador Duro'; //Almacena el valor del algoritmo seleccionado
   archivo: File | null = null; //Almacena el archivo que se carga
+
+  //variables del algoritmo02
+  func_Activacion: String[] = ['Tangente', 'Sigmoide', 'Seno', 'Lineal']
+  capa: Number[] = [1, 2, 3]
+  //capa_selec: Number = 0
 }
 
 //variables del algoritmo01
@@ -27,5 +32,7 @@ export interface Data {
   salidas: number[][];
   entradas: number[][];
 }
-
-//variables del algoritmo02
+export interface pesosType {
+  valueW: number[][];
+  valueU: number[];
+}

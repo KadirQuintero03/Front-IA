@@ -31,7 +31,7 @@ export class ParametrosEntradaComponent {
   mostrarGrafica: boolean = false;
   valueRange: number = 0;
 
-  constructor(private fileServices: FileService, private http: HttpClient) {}
+  constructor(private fileServices: FileService, public http: HttpClient) {}
 
   @ViewChild('Neurona', { static: false }) canvasRef!: ElementRef;
 
