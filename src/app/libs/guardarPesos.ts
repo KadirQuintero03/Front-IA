@@ -10,7 +10,6 @@ export function GuardarPesos(w: number[][], u: number[]) {
       valueW: w,
       valueU: u,
     };
-    alert('Se guardaron los pesos');
   } catch (error) {
     console.log(error);
   }

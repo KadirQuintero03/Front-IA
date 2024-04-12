@@ -1,18 +1,18 @@
 // import { Data, FuncionParametro } from "../interfaces/interfaceData";
-import { HttpClient } from "@angular/common/http";
-import {Data} from "../interface/variables"
-import { generarValoresAleatorios } from "../libs/generarWyU";
-import { GuardarPesos } from "../libs/guardarPesos";
-import { mostrar,ObjetoXY } from "./data_Charts";
-import { FileService } from "../services/File.service";
+import { HttpClient } from '@angular/common/http';
+import { Data } from '../interface/variables';
+import { generarValoresAleatorios } from '../libs/generarWyU';
+import { GuardarPesos } from '../libs/guardarPesos';
+import { mostrar, ObjetoXY } from './data_Charts';
+import { FileService } from '../services/File.service';
 export function entrenar(
   data: Data,
   rata: number,
   erroMaximoPer: number,
-  num_Iteraciones: number,
+  num_Iteraciones: number
   // servicio:FileService
 ) {
-  console.log("Data algoritmo: ", data)
+  console.log('Data algoritmo: ', data);
   const { entradas, salidas, numEntradas, numSalidas, numPatrones } = data;
   let w = data.W;
   let u = data.U;
@@ -21,7 +21,8 @@ export function entrenar(
   let Si = 0; //sumatoria de las salidas * pesos
   let erroresLineales: number[] = [];
   let errorPatrones: number[] = [];
-  for (let m = 0; m < num_Iteraciones; m++) {    //1000 es el numero de iteraciones
+  for (let m = 0; m < num_Iteraciones; m++) {
+    //1000 es el numero de iteraciones
     for (let h = 0; h < numPatrones; h++) {
       const salidasRed = [];
       for (let i = 0; i < numSalidas; i++) {
@@ -51,8 +52,8 @@ export function entrenar(
             w[j][i] + rata * erroresLineales[i] * entradas[h][j]; //calculamos el nuevo peso el 0
           w[j][i] = +nuevoPeso.toFixed(1); //aactualizamo los pesos
         }
-        const nuevoUmbral = u[i] + rata * erroresLineales[i] * 1;//calculamos el nuevo umbral
-        u[i] = +nuevoUmbral.toFixed(1);//actualizamos umbrals
+        const nuevoUmbral = u[i] + rata * erroresLineales[i] * 1; //calculamos el nuevo umbral
+        u[i] = +nuevoUmbral.toFixed(1); //actualizamos umbrals
       }
       erroresLineales = []; //reiniciamos los errores lineales
       // calculamos el error de la iteracion
@@ -65,9 +66,10 @@ export function entrenar(
     ErroresItecarion.push(+ErrorIteracion);
     errorPatrones = [];
     if (+ErroresItecarion[m] <= +erroMaximoPer) {
-      alert("Entrenamiento completado correctamente");
+      alert('Entrenamiento completado correctamente');
       GuardarPesos(w, u);
-      mostrar(ErroresItecarion)
+      mostrar(ErroresItecarion);
+
       // cargarDatosChart(ErroresItecarion);
       break;
     }
@@ -78,5 +80,4 @@ export function entrenar(
     }
   }
   console.log(ErroresItecarion);
-  
 }
