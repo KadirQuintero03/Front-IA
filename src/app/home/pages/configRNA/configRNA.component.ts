@@ -13,21 +13,25 @@ import { entrenar } from '../../../utils/algoritmo01';
 })
 export class ConfigRNAComponent {
   variables: variables = new variables();
-  capa_selec: number = 1; // Almacenara el valor del select
+  neu_cap1: string = '';
+  capa_selec: number = 0; // Almacenara el valor del select
   num_capa: any[] = []; // Contendra un N°Elemento según el valor que se seleccione en el select
 
   //Declaramos el metodo que actualizara el N°Elemento de mum_capa
   //Lo llamamos en el select del HTML
   actualizarLista(): void {
-    this.num_capa = 
-    //Crea un nuevo arreglo basado en el objeto iterable que se proporcione.
-    Array.from({
-      //Proporciona la longitud que tendra el nuevo arreglo
-      length: this.capa_selec }, 
-      //Funcion de mappeo
-    (index_value) => index_value);
+    this.num_capa =
+      //Crea un nuevo arreglo basado en el objeto iterable que se proporcione.
+      Array.from(
+        {
+          //Proporciona la longitud que tendra el nuevo arreglo
+          length: this.capa_selec,
+        },
+        //Funcion de mappeo
+        (index_value) => index_value
+      );
 
-    console.log(this.num_capa)
+    console.log("capas neu",this.num_capa);
   }
 
   Entrenamiento() {

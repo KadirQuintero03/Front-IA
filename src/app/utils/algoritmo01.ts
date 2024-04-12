@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import {Data} from "../interface/variables"
 import { generarValoresAleatorios } from "../libs/generarWyU";
 import { GuardarPesos } from "../libs/guardarPesos";
+import { mostrar,ObjetoXY } from "./data_Charts";
 import { FileService } from "../services/File.service";
 export function entrenar(
   data: Data,
@@ -66,6 +67,7 @@ export function entrenar(
     if (+ErroresItecarion[m] <= +erroMaximoPer) {
       alert("Entrenamiento completado correctamente");
       GuardarPesos(w, u);
+      mostrar(ErroresItecarion)
       // cargarDatosChart(ErroresItecarion);
       break;
     }
@@ -75,4 +77,6 @@ export function entrenar(
       u = generarValoresAleatorios(1, numSalidas)[0]; // Solo necesitamos un umbral para cada salida
     }
   }
+  console.log(ErroresItecarion);
+  
 }

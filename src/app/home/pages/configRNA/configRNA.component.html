@@ -1,11 +1,11 @@
-<section class="sec-config-RNA">
-  <p class="text-[#fff] text-xl font-bold ">
+<section class=" sec-config-RNA">
+  <p class="text-[#fff] text-xl font-bold flex justify-center">
     <strong>Configuracion de la Red Neuronal</strong>
   </p>
-  <p class="text-[#fff] text-lg mt-3 mb-3">
-    Seleccione un algoritmo de entrenamiento:
+  <p class="text-[#fff] text-lg mt-3 mb-3 flex justify-center">
+    Seleccione un algoritmo de entrenamiento
   </p>
-  <div class="flex justify-between gap-2">
+  <div class="flex flex-col justify-between gap-2">
     <select
       class="p-2 bg-[rgb(26,26,29)] border border-[#ffff] rounded-lg text-[#fff] outline-none"
       name=""
@@ -19,17 +19,17 @@
     <span
       class="font-bold bg-primary bg-opacity-10 text-primary p-2 rounded-lg"
     >
-      Algoritmo seleccionado
+      Algoritmo seleccionado:
       <span class="text-[#ffff]">{{ variables.algoritmo_selec }}</span></span
     >
   </div>
   <div>
-    <p class="text-[#fff] text-xl  mt-2">
-      <span class="text-primary">Parametros</span> de entrenamiento
+    <p class="text-[#fff] text-xl mt-2 flex justify-center">
+      <span class="text-primary">Parametros</span>de entrenamiento
     </p>
     <div class="flex items-center -mt-4 gap-5">
-      <div class="w-28 mx-1">
-        <p class="text-[#fff] text-sm mb-3 mt-3">Numero de iteraciones *</p>
+      <div class="flex flex-col w-28 ">
+        <p class="text-[#fff] text-sm mb-3 mt-3 flex">Numero de iteraciones *</p>
         <input
           type="range"
           min="0"
@@ -38,7 +38,7 @@
           [(ngModel)]="variables.num_iteraciones"
         />
         <p class="text-[#fff]">
-          Valor del rango: {{ variables.num_iteraciones }}
+          Valor del rango {{ variables.num_iteraciones }}
         </p>
       </div>
       <div class="w-28 mx-1 my-3">
@@ -52,7 +52,7 @@
           [(ngModel)]="variables.rata_aprendizaje"
         />
         <p class="text-[#fff]">
-          Valor del rango: {{ variables.rata_aprendizaje }}
+          Valor del rango {{ variables.rata_aprendizaje }}
         </p>
       </div>
       <div class="w-28 mx-1 my-3">
@@ -65,12 +65,12 @@
           step="0.1"
           [(ngModel)]="variables.error_maximo"
         />
-        <p class="text-[#fff]">Valor del rango: {{ variables.error_maximo }}</p>
+        <p class="text-[#fff] ">Valor del rango {{ variables.error_maximo }}</p>
       </div>
     </div>
   </div>
   <div class="flex flex-col">
-    <label class="text-[#ffff]">Numero de capas:</label>
+    <label class="text-[#ffff] flex">Numero de capas</label>
     <select
       class="p-2 bg-[rgb(26,26,29)] border border-[#ffff] rounded-lg text-[#fff] outline-none"
       name=""
@@ -89,9 +89,11 @@
       <input
         class="p-2 rounded-lg bg-[#1A1A1D] border border-[#ffff] text-[#ffff]"
         type="text "
+        [(ngModel)]="num_capa[$index]"
         placeholder="numero neuronas capa:"
       />
     </div>
     }
   </div>
+  <p>{{ neu_cap1 }}</p>
 </section>

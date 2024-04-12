@@ -1,6 +1,5 @@
 <main class="text-center">
-  <app-header/>
-
+  <app-header />
   <label class="text-[#fff] block -mb-3 mt-6 text-lg font-bold" for="file_input"
     >Cargar la Data</label
   >
@@ -12,26 +11,31 @@
     />
   </div>
 
-  <article class="flex mt-5 justify-around text-start pt-0 pr-12 pb-0 pl-24">
-    <section class="text-lg font-medium">
+  <!-- mt-5 justify-around text-start pt-0 pr-12 pb-0 pl-24 -->
+  <div class="test">
+    <article class="flex flex-col w-[420px] p-2">
+      <!-- <section class="text-lg font-medium"> -->
       <app-parametros-entrada />
-    </section>
-    <app-config-rna />
-  </article>
-
-  <div class="flex mt-2 w-full justify-center items-center">
-    <div>
+      <!-- </section> -->
+      <app-config-rna />
       <button
-        class="text-base text-[#fff] bg-[#079540] rounded-full p-2"
+        class="text-base mt-2 text-[#fff] bg-[#079540] rounded-full p-2"
         (click)="probar()"
       >
         <strong>Entrenar</strong>
       </button>
-    </div>
-  </div>
+    </article>
 
-  <article>
-    <app-graphic />
-    <app-simulacion />
-  </article>
+    <article class="p-3">
+      <app-graphic />
+      <app-simulacion />
+    </article>
+  </div>
 </main>
+
+<style>
+  .test {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+  }
+</style>

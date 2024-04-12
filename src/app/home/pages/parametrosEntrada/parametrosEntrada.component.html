@@ -1,23 +1,22 @@
-<H2 class="text-[#fff] font-bold">Parametros de entrada</H2>
-<div class="bg-[#242426] rounded-lg py-4 px-7 mt-4 mb-6 mx-0">
-  <div class="sec-prmt-div-N">
-    <div class="flex items-center">
-      <div class="w-4 h-4 mr-2 rounded-xl bg-[#079540]"></div>
-      <p class="text-[#fff]">Numero de entradas: {{ variables.entradas }}</p>
-    </div>
-    <div class="flex items-center">
-      <div class="w-4 h-4 mr-2 rounded-xl bg-[#44226f]"></div>
-      <p class="text-[#fff]">Numero de salidas: {{ variables.salidas }}</p>
-    </div>
-    <div class="flex items-center">
-      <div class="w-4 h-4 mr-2 rounded-xl bg-[#c3083f]"></div>
-      <p class="text-[#fff]">Numero de patrones: {{ variables.patrones }}</p>
+<H2 class="text-[#fff] font-bold text-xl">Parametros de entrada</H2>
+
+<div class="flex justify-center">
+  <div class="bg-[#242426] rounded-lg py-4 px-7 mt-3 mb-6 mx-0 w-[300px]">
+    <div>
+      <div class="flex items-center">
+        <div class="w-4 h-4 mr-2 rounded-xl bg-[#079540]"></div>
+        <p class="text-[#fff]">Numero de entradas: {{ variables.entradas }}</p>
+      </div>
+      <div class="flex items-center">
+        <div class="w-4 h-4 mr-2 rounded-xl bg-[#44226f]"></div>
+        <p class="text-[#fff]">Numero de salidas: {{ variables.salidas }}</p>
+      </div>
+      <div class="flex items-center">
+        <div class="w-4 h-4 mr-2 rounded-xl bg-[#c3083f]"></div>
+        <p class="text-[#fff]">Numero de patrones: {{ variables.patrones }}</p>
+      </div>
     </div>
   </div>
 </div>
-<canvas
-  #Neurona
-  class="bg-[#1a1a1d] rounded-lg"
-  width="300"
-  height="200"
-></canvas>
+
+

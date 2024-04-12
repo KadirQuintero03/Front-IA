@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ChartComponent } from 'ng-apexcharts';
 import { FormsModule } from '@angular/forms';
 import { ChartOptions, yaxis } from '../../../utils/type_Charts';
-import { north, mostrar, arrayObjetos } from '../../../utils/data_Charts';
+import { north, arrayObjetos } from '../../../utils/data_Charts';
 
 @Component({
   selector: 'app-graphic',
@@ -31,19 +31,18 @@ export class graficaComponent {
   iteraciones: any;
 
   constructor() {
-    mostrar();
     this.iteraciones = arrayObjetos;
     this.chartOptions = {
       series: [
         {
-          name: 'Eli',
+          name: 'Error',
           data: arrayObjetos,
         },
       ],
       chart: {
         type: 'area',
         height: 270,
-        width: 550,
+        width: 800,
       },
       dataLabels: {
         enabled: false,
@@ -61,7 +60,6 @@ export class graficaComponent {
         },
       },
       xaxis: {
-        type: 'numeric',
         axisBorder: {
           show: false,
         },

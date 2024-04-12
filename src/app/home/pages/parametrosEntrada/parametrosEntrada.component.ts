@@ -33,40 +33,6 @@ export class ParametrosEntradaComponent {
 
   constructor(private fileServices: FileService, public http: HttpClient) {}
 
-  @ViewChild('Neurona', { static: false }) canvasRef!: ElementRef;
-
-  Draw(): void {
-    const canvas = this.canvasRef.nativeElement;
-    const ctx = canvas.getContext('2d');
-
-    ctx.strokeStyle = 'white'; // Establece el color de trazo
-    ctx.fillStyle = 'white'; //Establece el color de relleno
-
-    for (let i = 0; i < this.variables.entradas; i++) {
-      ctx.beginPath();
-      ctx.arc(50, 50 * (i + 1), 20, 0, 2 * Math.PI); // Dibuja un círculo
-      ctx.fill(); // Rellena el círculo
-    }
-
-    console.log('data', this.variables.data);
-
-    for (let i = 0; i < this.variables.salidas; i++) {
-      ctx.beginPath();
-      ctx.arc(150, 50 * (i + 1), 20, 0, 2 * Math.PI); // Dibuja un círculo
-      ctx.fill(); // Rellena el círculo
-    }
-
-    // Conecta cada esfera de entrada con cada esfera de salida
-    for (let i = 0; i < this.variables.entradas; i++) {
-      for (let j = 0; j < this.variables.salidas; j++) {
-        ctx.beginPath();
-        ctx.moveTo(50, 50 * (i + 1)); // Punto de inicio en la esfera de entrada
-        ctx.lineTo(150, 50 * (j + 1)); // Punto final en la esfera de salida
-        ctx.stroke(); // Dibuja la línea
-      }
-    }
-  }
-
   get(event: any) {
     //Almacenamos el archivo en una variable.
     this.variables.archivo = event.target.files[0];
@@ -82,14 +48,10 @@ export class ParametrosEntradaComponent {
           salidas: response[0].salidas,
           entradas: response[0].entradas,
         };
-        //{ entradas: response[0].entradas },
-        this.Draw();
+        //this.Draw();
         console.log('w: ', this.variables.w);
         console.log('u: ', this.variables.u);
         console.log('data: ', this.variables.data);
-        // console.log('Response: ', response);
-        // console.log('EntradasValue:', this.data[1].entradas);
-        // console.log('SalidasValue: ', this.data[0].salidas);
       },
       (error) => {
         console.error('Error al cargar el archivo:', error);

@@ -26,20 +26,22 @@ export const north = [
 ];
 
 for (let i = 0; i < 100; i++) {}
-type ObjetoXY = {
-  x: number;
-  y: number;
+export type ObjetoXY = {
+  x: number;//itercaion
+  y: number;//error en la iteracion
 };
 
 // Ahora declaramos el array con ese tipo
 export const arrayObjetos: ObjetoXY[] = [];
 
-export function mostrar() {
+export function mostrar(data:any[]) {
+  console.log("data mostrar",data);
+  
   // Llenamos el array con objetos que tienen propiedades x e y
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < data.length; i++) {
     const objeto = {
       x: i,
-      y: parseFloat((1 / Math.pow(2, i)).toFixed(5)), // Hacemos que y tienda a 0 con solo 3 decimales
+      y: data[i], // Hacemos que y tienda a 0 con solo 3 decimales
     };
     arrayObjetos.push(objeto);
   }
