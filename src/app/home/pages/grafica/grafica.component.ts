@@ -36,7 +36,7 @@ export class graficaComponent {
       series: [
         {
           name: 'Error',
-          data: arrayObjetos,
+          data: this.iteraciones,
         },
       ],
       chart: {
@@ -92,4 +92,5 @@ export class graficaComponent {
       },
     };
   }
+  
 }

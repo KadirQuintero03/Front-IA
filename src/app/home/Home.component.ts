@@ -44,7 +44,7 @@ export default class HomeComponent {
   get(event: any) {
     this.parametrosEntrada.get(event);
   }
-
+  verGrafica: boolean = false;
 
   probar() {
     console.log('numEntradas: ', this.params.variables.entradas);
@@ -72,8 +72,9 @@ export default class HomeComponent {
       data,
       this.config.variables.rata_aprendizaje,
       this.config.variables.error_maximo,
-      this.config.variables.num_iteraciones,
+      this.config.variables.num_iteraciones
     );
+    this.verGrafica = true;
 
     // this.config.Entrenamiento()
     // console.log('variables', this.variables);
