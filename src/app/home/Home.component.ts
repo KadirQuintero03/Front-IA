@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -30,7 +30,7 @@ import { HeaderComponent } from '../shared/header/header.component';
 export default class HomeComponent {
   variables: variables = new variables();
   valueRange: number = 0;
-  constructor() {}
+  ver_neurona: boolean = false;
 
   @ViewChild(ParametrosEntradaComponent)
   parametrosEntrada!: ParametrosEntradaComponent;
@@ -41,10 +41,42 @@ export default class HomeComponent {
   @ViewChild(ParametrosEntradaComponent)
   params!: ParametrosEntradaComponent;
 
-  get(event: any) {
-    this.parametrosEntrada.get(event);
+  @ViewChild('Neurona', { static: false }) canvasRef!: ElementRef;
+
+  Draw(en: number, sa: number): void {
+    const canvas = this.canvasRef.nativeElement;
+    const ctx = canvas.getContext('2d');
+
+    ctx.strokeStyle = 'white'; // Establece el color de trazo
+    ctx.fillStyle = 'white'; //Establece el color de relleno
+
+    for (let i = 0; i < en; i++) {
+      ctx.beginPath();
+      ctx.arc(50, 50 * (i + 1), 20, 0, 2 * Math.PI); // Dibuja un círculo
+      ctx.fill(); // Rellena el círculo
+    }
+
+    for (let i = 0; i < sa; i++) {
+      ctx.beginPath();
+      ctx.arc(150, 50 * (i + 1), 20, 0, 2 * Math.PI); // Dibuja un círculo
+      ctx.fill(); // Rellena el círculo
+    }
+
+    // Conecta cada esfera de entrada con cada esfera de salida
+    for (let i = 0; i < en; i++) {
+      for (let j = 0; j < sa; j++) {
+        ctx.beginPath();
+        ctx.moveTo(50, 50 * (i + 1)); // Punto de inicio en la esfera de entrada
+        ctx.lineTo(150, 50 * (j + 1)); // Punto final en la esfera de salida
+        ctx.stroke(); // Dibuja la línea
+      }
+    }
   }
 
+  get(event: any) {
+    this.parametrosEntrada.get(event);
+    this.ver_neurona = true;
+  }
 
   probar() {
     console.log('numEntradas: ', this.params.variables.entradas);
@@ -72,7 +104,7 @@ export default class HomeComponent {
       data,
       this.config.variables.rata_aprendizaje,
       this.config.variables.error_maximo,
-      this.config.variables.num_iteraciones,
+      this.config.variables.num_iteraciones
     );
 
     // this.config.Entrenamiento()

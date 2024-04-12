@@ -11,13 +11,18 @@
     />
   </div>
 
-  <!-- mt-5 justify-around text-start pt-0 pr-12 pb-0 pl-24 -->
   <div class="test">
     <article class="flex flex-col w-[420px] p-2">
-      <!-- <section class="text-lg font-medium"> -->
       <app-parametros-entrada />
-      <!-- </section> -->
       <app-config-rna />
+      @if(ver_neurona){
+      <canvas
+        #Neurona
+        class="bg-[#1a1a1d] rounded-lg"
+        width="300"
+        height="200"
+      ></canvas>
+      }
       <button
         class="text-base mt-2 text-[#fff] bg-[#079540] rounded-full p-2"
         (click)="probar()"

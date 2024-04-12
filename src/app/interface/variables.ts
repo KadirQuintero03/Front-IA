@@ -19,7 +19,7 @@ export class variables {
   //variables del algoritmo02
   func_Activacion: String[] = ['Tangente', 'Sigmoide', 'Seno', 'Lineal']
   capa: Number[] = [1, 2, 3]
-  //capa_selec: Number = 0
+  ver_neurona: boolean = false
 }
 
 //variables del algoritmo01

@@ -1,17 +1,9 @@
 import { CommonModule } from '@angular/common';
-import {
-  Component,
-  ViewChild,
-  ElementRef,
-  inject,
-  Inject,
-  output,
-  Injectable,
-} from '@angular/core';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { Component, ElementRef, Injectable, ViewChild } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { FileService } from '../../../services/File.service';
 import { variables } from '../../../interface/variables';
-import { entrenar } from '../../../utils/algoritmo01';
+import HomeComponent from '../../Home.component';
 
 @Component({
   selector: 'app-parametros-entrada',
@@ -31,7 +23,7 @@ export class ParametrosEntradaComponent {
   mostrarGrafica: boolean = false;
   valueRange: number = 0;
 
-  constructor(private fileServices: FileService, public http: HttpClient) {}
+  constructor(private fileServices: FileService, public http: HttpClient, public home: HomeComponent) {}
 
   get(event: any) {
     //Almacenamos el archivo en una variable.
@@ -48,7 +40,8 @@ export class ParametrosEntradaComponent {
           salidas: response[0].salidas,
           entradas: response[0].entradas,
         };
-        //this.Draw();
+        this.home.Draw(this.variables.entradas, this.variables.salidas);
+        this.variables.ver_neurona = true;
         console.log('w: ', this.variables.w);
         console.log('u: ', this.variables.u);
         console.log('data: ', this.variables.data);
