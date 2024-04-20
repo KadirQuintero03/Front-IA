@@ -79,7 +79,6 @@ export default class HomeComponent {
     this.params.get(event);
     this.ver_neurona = true;
   }
-  verGrafica: boolean = false;
 
   probar() {
     console.log('numEntradas: ', this.params.variables.entradas);
@@ -110,7 +109,6 @@ export default class HomeComponent {
       this.config.variables.num_iteraciones
 
     );
-    this.verGrafica = true;
 
     // this.config.Entrenamiento()
     // console.log('variables', this.variables);

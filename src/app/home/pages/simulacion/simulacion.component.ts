@@ -8,7 +8,7 @@ import { Component, Injectable } from '@angular/core';
     CommonModule,
   ],
   templateUrl: './simulacion.component.html',
-  styleUrl: './simulacion.component.css',
+  //styleUrl: './simulacion.component.css',
 })
 
 @Injectable({

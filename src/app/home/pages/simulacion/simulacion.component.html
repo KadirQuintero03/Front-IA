@@ -1,63 +1,32 @@
-<h3 class="font-bold text-xl text-[#FFFFFF]">Simulacion</h3>
+<header>
+  <h3 class="font-bold text-xl">
+    Simulacion de <span class="text-[#8E2FE3]">salidas</span>
+  </h3>
+</header>
 
-    <div class="flex justify-center mt-5">
-      <input
-        class="block text-[#C3083F] rounded-lg cursor-pointer bg-[#441525] focus:outline-none"
-        #file_input
-        type="file"
-      />
+<div class="mt-2">
+  <label
+    class="text-center flex flex-col w-[500px] border-2 border-dashed rounded-lg cursor-pointer dark:hover:bg-bray-800 bg-black bg-opacity-20 border-gray-500"
+  >
+    <h2 class="text-[#fff]">Carga tu banco de datos</h2>
+    <div>
+      <img class="h-24" src="" alt="" />
+      <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
+        <span class="font-semibold">Click para seleccionar</span>
+      </p>
+      <p class="text-xs text-white dark:text-gray-400">
+        CARGAR UN ARCHIVO DE EXCEL (XLS)
+      </p>
+      <span></span>
     </div>
+    <input id="dropzone-file" type="file" class="hidden" />
+  </label>
+</div>
 
-    <div class="flex justify-center">
-      <div class="flex justify-between w-[800px]">
-        <div>
-          <h3 class="text-[#FFFF] text-[20px] font-bold">SALIDA DESEADA</h3>
-          <div
-            class="bg-[#242426] flex justify-center p-4 gap-10 rounded-lg"
-          >
-            <div class="flex flex-col text-[#FFFF]">
-              <h4 class="text-[#079540] font-bold">MT1</h4>
-              <div class="">0</div>
-              <div>0</div>
-              <div>1</div>
-              <div>1</div>
-            </div>
-            <div class="flex flex-col text-[#FFFF]">
-              <h4 class="text-[#079540] font-bold">MT2</h4>
-              <div>0</div>
-              <div>1</div>
-              <div>0</div>
-              <div>1</div>
-            </div>
-          </div>
-        </div>
-        <div class="flex items-center">
-          <button
-            class="bg-primary bg-opacity-10 py-2 px-4 hover:bg-primary hover:bg-opacity-30 rounded-full text-primary"
-          >
-            Iniciar simulacion
-          </button>
-        </div>
-        <div>
-          <h3 class="text-[#FFFF] text-[20px] font-bold">SALIDA DE LA RED</h3>
-          <div
-            class="bg-[#242426] flex justify-center p-4 gap-10 rounded-lg"
-          >
-            <div class="flex flex-col text-[#FFFF]">
-              <h4 class="text-primary font-bold">YD1</h4>
-              <div>0</div>
-              <div>0</div>
-              <div>1</div>
-              <div>1</div>
-            </div>
-            <div class="flex flex-col text-[#FFFF]">
-              <h4 class="text-primary font-bold">YD2</h4>
-              <div>0</div>
-              <div>1</div>
-              <div>0</div>
-              <div>1</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+<div>
+  <button
+    class="text-white bg-gradient-to-r mt-2 from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2"
+  >
+    Simular
+  </button>
+</div>
