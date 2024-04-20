@@ -2,3 +2,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'Schoolbell';
+  src: url('../src/assets/fonts/Schoolbell-Regular.ttf') format('woff2'),
+}
