@@ -18,9 +18,7 @@ export class ConfigRNAComponent {
   num_capa: any[] = []; // Contendra un N°Elemento según el valor que se seleccione en el select
 
   algoritmo_select(valor: String){
-
     this.variables.algoritmo_selec = valor
-    console.log("algoritmo: ", this.variables.algoritmo_selec)
   }
 
   //Declaramos el metodo que actualizara el N°Elemento de mum_capa
@@ -36,14 +34,9 @@ export class ConfigRNAComponent {
         //Funcion de mappeo
         (index_value) => index_value
       );
-
-    console.log('capas neu', this.num_capa);
   }
 
   Entrenamiento() {
-    console.log(this.variables);
-    console.log('entrenar aqui', this.variables.algoritmo_selec);
-
     const { num_iteraciones, rata_aprendizaje, error_maximo } = this.variables;
 
     // //Validamos que el error maximo permitido no sea menor a 0 ni mayor a 0.1.

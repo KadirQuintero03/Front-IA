@@ -10,6 +10,7 @@ import { ConfigRNAComponent } from './pages/configRNA/configRNA.component';
 import { ParametrosEntradaComponent } from './pages/parametrosEntrada/parametrosEntrada.component';
 import { SimulacionComponent } from './pages/simulacion/simulacion.component';
 import { HeaderComponent } from '../shared/header/header.component';
+import { ParamsEntrenamientoComponent } from './pages/paramsEntrenamiento/paramsEntrenamiento.component';
 
 @Component({
   selector: 'app-home',
@@ -24,6 +25,7 @@ import { HeaderComponent } from '../shared/header/header.component';
     ParametrosEntradaComponent,
     SimulacionComponent,
     HeaderComponent,
+    ParamsEntrenamientoComponent
   ],
   templateUrl: './Home.component.html',
 })
@@ -32,14 +34,14 @@ export default class HomeComponent {
   valueRange: number = 0;
   ver_neurona: boolean = false;
 
-  @ViewChild(ParametrosEntradaComponent)
-  parametrosEntrada!: ParametrosEntradaComponent;
-
   @ViewChild(ConfigRNAComponent)
   config!: ConfigRNAComponent;
 
   @ViewChild(ParametrosEntradaComponent)
   params!: ParametrosEntradaComponent;
+
+  @ViewChild(ParamsEntrenamientoComponent)
+  paramsE!: ParamsEntrenamientoComponent;
 
   @ViewChild('Neurona', { static: false }) canvasRef!: ElementRef;
 
@@ -74,7 +76,7 @@ export default class HomeComponent {
   }
 
   get(event: any) {
-    this.parametrosEntrada.get(event);
+    this.params.get(event);
     this.ver_neurona = true;
   }
   verGrafica: boolean = false;
@@ -83,9 +85,9 @@ export default class HomeComponent {
     console.log('numEntradas: ', this.params.variables.entradas);
     console.log('numSalidas: ', this.params.variables.salidas);
     console.log('numPatrones: ', this.params.variables.patrones);
-    console.log('rata: ', this.config.variables.rata_aprendizaje);
-    console.log('error: ', this.config.variables.error_maximo);
-    console.log('iteraciones: ', this.config.variables.num_iteraciones);
+    console.log('rata: ', this.paramsE.variables.rata_aprendizaje);
+    console.log('error: ', this.paramsE.variables.error_maximo);
+    console.log('iteraciones: ', this.paramsE.variables.num_iteraciones);
     console.log('METODO PROBAR');
     console.log('w: ', this.params.variables.w);
     console.log('u: ', this.params.variables.u);

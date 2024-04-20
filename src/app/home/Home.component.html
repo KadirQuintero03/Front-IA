@@ -36,17 +36,21 @@
     </div>
   </article>
 
+  <app-params-entrenamiento/>
+
+  <button
+  class="text-base mt-2 text-[#fff] bg-[#079540] rounded-full p-2"
+  (click)="probar()"
+>
+  <strong>Entrenar</strong>
+</button>
+
   <!-- <div>
     <article class="flex flex-col w-[420px] p-2">
       @if(ver_neurona){
       <canvas #Neurona class="bg-[#1a1a1d] rounded-lg" width="300" height="200"></canvas>
       }
-      <button
-        class="text-base mt-2 text-[#fff] bg-[#079540] rounded-full p-2"
-        (click)="probar()"
-      >
-        <strong>Entrenar</strong>
-      </button>
+
     </article>
 
     <article class="p-3">
