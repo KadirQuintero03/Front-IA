@@ -17,6 +17,12 @@ export class ConfigRNAComponent {
   capa_selec: number = 0; // Almacenara el valor del select
   num_capa: any[] = []; // Contendra un N°Elemento según el valor que se seleccione en el select
 
+  algoritmo_select(valor: String){
+
+    this.variables.algoritmo_selec = valor
+    console.log("algoritmo: ", this.variables.algoritmo_selec)
+  }
+
   //Declaramos el metodo que actualizara el N°Elemento de mum_capa
   //Lo llamamos en el select del HTML
   actualizarLista(): void {
@@ -31,7 +37,7 @@ export class ConfigRNAComponent {
         (index_value) => index_value
       );
 
-    console.log("capas neu",this.num_capa);
+    console.log('capas neu', this.num_capa);
   }
 
   Entrenamiento() {

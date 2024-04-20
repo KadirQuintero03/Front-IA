@@ -15,9 +15,8 @@ export class variables {
   algoritmos: String[] = [
     'Correccion de errores',
     'Backpropagation',
-    'Proximamente',
   ]; //Algoritmos disponibles
-  algoritmo_selec: String = 'Correccion de errores'; //Almacena el valor del algoritmo seleccionado
+  algoritmo_selec: String = ''; //Almacena el valor del algoritmo seleccionado
   archivo: File | null = null; //Almacena el archivo que se carga
 
   //variables del algoritmo02

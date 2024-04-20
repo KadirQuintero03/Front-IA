@@ -1,9 +1,9 @@
-<p class="text-xl font-bold">
-  <strong>Configuracion de la red</strong>
-</p>
+<main class="flex flex-col mt-3 gap-3">
+  <p class="text-xl font-bold -mt-3">
+    <strong>Configuracion de la red</strong>
+  </p>
 
-<div class="flex flex-col mt-3">
-  <label class="flex">Numero de capas</label>
+  <label>Numero de capas ocultas</label>
   <select
     class="p-2 bg-[rgb(26,26,29)] border border-[#ffff] rounded-lg outline-none"
     name=""
@@ -18,38 +18,30 @@
 
   @for (item of num_capa; track $index) {
   <div class="flex gap-2 flex-col">
-    <label class="text-[#ffff]">neuronas capa {{ $index + 1 }} </label>
     <input
       class="p-2 rounded-lg bg-[#1A1A1D] border border-[#ffff]"
       type="text "
       [(ngModel)]="num_capa[$index]"
-      placeholder="numero neuronas capa:"
+      placeholder="numero neuronas capa: {{ $index + 1 }}"
     />
   </div>
   }
-
   <p>{{ neu_cap1 }}</p>
-</div>
 
-<p class="text-lg mt-3 mb-3">
-  Seleccione un algoritmo de entrenamiento
-</p>
-<div class="flex flex-col justify-between gap-2">
-  <select
-    class="p-2 bg-[rgb(26,26,29)] border border-[#ffff] rounded-lg text-[#fff] outline-none"
-    name=""
-    id=""
-    [(ngModel)]="variables.algoritmo_selec"
-  >
-    <option value="" *ngFor="let item of variables.algoritmos" [value]="item">
+  <p class="text-lg">Funcion de activacion capa de salida</p>
+
+  <p class="text-lg">Seleccione un algoritmo de entrenamiento</p>
+  <div class="flex justify-between gap-2">
+    @for (item of variables.algoritmos; track $index) {
+    <button
+      (click)="algoritmo_select(item)"
+      class="p-2 rounded-lg bg-[#8E2FE3] bg-opacity-20 cursor-pointer text-[#8E2FE3]"
+    >
       {{ item }}
-    </option>
-  </select>
-  <span class="font-bold bg-primary bg-opacity-10 text-primary p-2 rounded-lg">
-    Algoritmo seleccionado:
-    <span>{{ variables.algoritmo_selec }}</span></span
-  >
-</div>
+    </button>
+    }
+  </div>
+</main>
 
 <!-- <div>
     <p class="text-[#fff] text-xl mt-2 flex justify-center">
