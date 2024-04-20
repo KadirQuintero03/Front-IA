@@ -1,8 +1,37 @@
-<section class=" sec-config-RNA">
-  <p class="text-[#fff] text-xl font-bold flex justify-center">
-    <strong>Configuracion de la Red Neuronal</strong>
+<section class="text-white">
+  <p class="text-xl font-bold">
+    <strong>Configuracion de la red</strong>
   </p>
-  <p class="text-[#fff] text-lg mt-3 mb-3 flex justify-center">
+
+  <div class="flex flex-col">
+    <label class="flex">Numero de capas</label>
+    <select
+      class="p-2 bg-[rgb(26,26,29)] border border-[#ffff] rounded-lg outline-none"
+      name=""
+      id=""
+      [(ngModel)]="capa_selec"
+      (change)="actualizarLista()"
+    >
+      <option value="" *ngFor="let item of variables.capa" [value]="item">
+        {{ item }}
+      </option>
+    </select>
+
+    @for (item of num_capa; track $index) {
+    <div class="flex gap-2 flex-col">
+      <label class="text-[#ffff]">neuronas capa {{ $index + 1 }} </label>
+      <input
+        class="p-2 rounded-lg bg-[#1A1A1D] border border-[#ffff]"
+        type="text "
+        [(ngModel)]="num_capa[$index]"
+        placeholder="numero neuronas capa:"
+      />
+    </div>
+    }
+  </div>
+  <p>{{ neu_cap1 }}</p>
+
+  <p class="text-lg mt-3 mb-3 flex justify-center">
     Seleccione un algoritmo de entrenamiento
   </p>
   <div class="flex flex-col justify-between gap-2">
@@ -20,10 +49,11 @@
       class="font-bold bg-primary bg-opacity-10 text-primary p-2 rounded-lg"
     >
       Algoritmo seleccionado:
-      <span class="text-[#ffff]">{{ variables.algoritmo_selec }}</span></span
+      <span>{{ variables.algoritmo_selec }}</span></span
     >
   </div>
-  <div>
+
+  <!-- <div>
     <p class="text-[#fff] text-xl mt-2 flex justify-center">
       <span class="text-primary">Parametros</span>de entrenamiento
     </p>
@@ -68,32 +98,5 @@
         <p class="text-[#fff] ">Valor del rango {{ variables.error_maximo }}</p>
       </div>
     </div>
-  </div>
-  <div class="flex flex-col">
-    <label class="text-[#ffff] flex">Numero de capas</label>
-    <select
-      class="p-2 bg-[rgb(26,26,29)] border border-[#ffff] rounded-lg text-[#fff] outline-none"
-      name=""
-      id=""
-      [(ngModel)]="capa_selec"
-      (change)="actualizarLista()"
-    >
-      <option value="" *ngFor="let item of variables.capa" [value]="item">
-        {{ item }}
-      </option>
-    </select>
-
-    @for (item of num_capa; track $index) {
-    <div class="flex gap-2 flex-col">
-      <label class="text-[#ffff]">neuronas capa {{ $index + 1 }} </label>
-      <input
-        class="p-2 rounded-lg bg-[#1A1A1D] border border-[#ffff] text-[#ffff]"
-        type="text "
-        [(ngModel)]="num_capa[$index]"
-        placeholder="numero neuronas capa:"
-      />
-    </div>
-    }
-  </div>
-  <p>{{ neu_cap1 }}</p>
+  </div> -->
 </section>

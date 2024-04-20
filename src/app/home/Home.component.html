@@ -1,40 +1,57 @@
 <main class="text-center">
   <app-header />
-  <div class="flex flex-col justify-center gap-2 mt-5 p-4 bg-black bg-opacity-20 w-full rounded-lg">
-    <label
-      class="w-full border-2 border-dashed rounded-lg cursor-pointer dark:hover:bg-bray-800 bg-black bg-opacity-20  border-gray-500 ">
-      <h2> Carga tu banco de datos </h2>
-      <div><img class="h-24" src="" alt="">
-        <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click para
-            seleccionar</span></p>
-        <p class="text-xs text-gray-500 dark:text-gray-400">CARGAR UN ARCHIVO DE EXCEL (XLS)</p><span></span>
-      </div>
-      <input id="dropzone-file" (change)="get($event)" type="file" class="hidden" />
-    </label>
-    <app-parametros-entrada/>
-  </div>
+  <article class="flex gap-4 w-[1000px]">
+    <div
+      class="flex flex-col justify-center gap-2 mt-4 p-4 bg-[#000] bg-opacity-20 w-full rounded-lg"
+    >
+      <label
+        class="w-full border-2 border-dashed rounded-lg cursor-pointer dark:hover:bg-bray-800 bg-black bg-opacity-20 border-gray-500"
+      >
+        <h2 class="text-[#fff]">Carga tu banco de datos</h2>
+        <div>
+          <img class="h-24" src="" alt="" />
+          <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
+            <span class="font-semibold">Click para seleccionar</span>
+          </p>
+          <p class="text-xs text-white dark:text-gray-400">
+            CARGAR UN ARCHIVO DE EXCEL (XLS)
+          </p>
+          <span></span>
+        </div>
+        <input
+          id="dropzone-file"
+          (change)="get($event)"
+          type="file"
+          class="hidden"
+        />
+      </label>
+      <app-parametros-entrada />
+    </div>
 
-  <div>
+    <div class="text-start p-4 bg-[#000] bg-opacity-20 w-full rounded-lg">
+      <app-config-rna />
+    </div>
+  </article>
+
+  <!-- <div>
     <article class="flex flex-col w-[420px] p-2">
-
-      <!-- <app-config-rna /> -->
       @if(ver_neurona){
       <canvas #Neurona class="bg-[#1a1a1d] rounded-lg" width="300" height="200"></canvas>
       }
-      <!-- <button
+      <button
         class="text-base mt-2 text-[#fff] bg-[#079540] rounded-full p-2"
         (click)="probar()"
       >
         <strong>Entrenar</strong>
-      </button> -->
+      </button>
     </article>
 
-    <!-- <article class="p-3">
+    <article class="p-3">
       @if (verGrafica) {
       <app-graphic />
 
       }
       <app-simulacion />
-    </article> -->
-  </div>
+    </article>
+  </div> -->
 </main>

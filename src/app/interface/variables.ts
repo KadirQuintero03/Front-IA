@@ -12,14 +12,18 @@ export class variables {
   u: [] = []; //Umbrales -> Backend
   data: any; //La Data que se recibe del servidor
 
-  algoritmos: String[] = ['Limitador Duro', 'Backpropagation', 'Proximamente']; //Algoritmos disponibles
-  algoritmo_selec: String = 'Limitador Duro'; //Almacena el valor del algoritmo seleccionado
+  algoritmos: String[] = [
+    'Correccion de errores',
+    'Backpropagation',
+    'Proximamente',
+  ]; //Algoritmos disponibles
+  algoritmo_selec: String = 'Correccion de errores'; //Almacena el valor del algoritmo seleccionado
   archivo: File | null = null; //Almacena el archivo que se carga
 
   //variables del algoritmo02
-  func_Activacion: String[] = ['Tangente', 'Sigmoide', 'Seno', 'Lineal']
-  capa: Number[] = [1, 2, 3]
-  ver_neurona: boolean = false
+  func_Activacion: String[] = ['Tangente', 'Sigmoide', 'Seno', 'Lineal'];
+  capa: Number[] = [1, 2, 3];
+  ver_neurona: boolean = false;
 }
 
 //variables del algoritmo01
