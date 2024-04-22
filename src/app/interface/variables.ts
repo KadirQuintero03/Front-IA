@@ -12,15 +12,14 @@ export class variables {
   u: [] = []; //Umbrales -> Backend
   data: any; //La Data que se recibe del servidor
 
-  algoritmos: String[] = [
-    'Correccion de errores',
-    'Backpropagation',
-  ]; //Algoritmos disponibles
+  algoritmos: String[] = ['Correccion de errores', 'Backpropagation']; //Algoritmos disponibles
   algoritmo_selec: String = ''; //Almacena el valor del algoritmo seleccionado
   archivo: File | null = null; //Almacena el archivo que se carga
+  archivoName: string='';
 
   //variables del algoritmo02
-  func_Activacion: String[] = ['Tangente', 'Sigmoide', 'Seno', 'Lineal'];
+  func_Activacion: String[] = ['Tangente', 'Sigmoide', 'Seno', 'Lineal','Gausiana'];
+  func_Act_Select: String[] = [];
   capa: Number[] = [1, 2, 3];
   ver_neurona: boolean = false;
 }

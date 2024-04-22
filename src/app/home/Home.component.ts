@@ -33,6 +33,7 @@ export default class HomeComponent {
   variables: variables = new variables();
   valueRange: number = 0;
   ver_neurona: boolean = false;
+  dataCargada:boolean=false
 
   @ViewChild(ConfigRNAComponent)
   config!: ConfigRNAComponent;
@@ -78,6 +79,8 @@ export default class HomeComponent {
   get(event: any) {
     this.params.get(event);
     this.ver_neurona = true;
+    this.dataCargada = true;
+    // console.log("name file home",this.params.variables.archivoName);
   }
 
   probar() {
@@ -107,7 +110,6 @@ export default class HomeComponent {
       this.config.variables.rata_aprendizaje,
       this.config.variables.error_maximo,
       this.config.variables.num_iteraciones
-
     );
 
     // this.config.Entrenamiento()

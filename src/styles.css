@@ -1,9 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @font-face {
-  font-family: 'Schoolbell';
-  src: url('../src/assets/fonts/Schoolbell-Regular.ttf') format('woff2'),
+  font-family: "Schoolbell";
+  src: url("../src/assets/fonts/Schoolbell-Regular.ttf") format("woff2");
+}
+
+body {
+  background-image: url("../src/assets/img/fondo.svg");
 }

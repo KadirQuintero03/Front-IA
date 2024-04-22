@@ -10,7 +10,7 @@ import HomeComponent from '../../Home.component';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './parametrosEntrada.component.html',
-  styleUrl: './parametrosEntrada.component.css',
+  //styleUrl: './parametrosEntrada.component.css',
 })
 @Injectable({
   providedIn: 'root', // Esto proporciona la instancia globalmente
@@ -28,6 +28,9 @@ export class ParametrosEntradaComponent {
   get(event: any) {
     //Almacenamos el archivo en una variable.
     this.variables.archivo = event.target.files[0];
+    this.variables.archivoName = event.target.files[0].name;
+    console.log("ARCHIVO", this.variables.archivoName);
+
 
     this.fileServices.mostrar(this.variables.archivo, this.http).subscribe(
       (response) => {
