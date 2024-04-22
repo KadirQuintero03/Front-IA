@@ -14,40 +14,37 @@ import { entrenar } from '../../../utils/algoritmo01';
 export class ConfigRNAComponent {
   variables: variables = new variables();
   neu_cap1: string = '';
-  capa_selec: number = 0; // Almacenara el valor del select
-  num_capa: any[] = []; // Contendra un N°Elemento según el valor que se seleccione en el select
-  capasNeu: any[] = [];
-  fActivation: any[] = [];
+
 
   algoritmo_select(valor: String) {
     this.variables.algoritmo_selec = valor;
-    for (let i = 0; i < this.num_capa.length; i++) {
+    for (let i = 0; i < this.variables.num_capa.length; i++) {
       let name = `numNeuronasCapa${i + 1}`;
 
-      this.capasNeu.push({ [name]: this.num_capa[i],fa:this.fActivation[i] });
+      this.variables.capasNeu.push({ [name]: this.variables.num_capa[i],fa:this.variables.fActivation[i] });
     }
-    console.log('capas', this.capasNeu);
+    console.log('capas', this.variables.capasNeu);
   }
 
   //Declaramos el metodo que actualizara el N°Elemento de mum_capa
   //Lo llamamos en el select del HTML
   actualizarLista(): void {
-    this.num_capa =
+    this.variables.num_capa =
       //Crea un nuevo arreglo basado en el objeto iterable que se proporcione.
       Array.from(
         {
           //Proporciona la longitud que tendra el nuevo arreglo
-          length: this.capa_selec,
+          length: this.variables.capa_selec,
         },
         //Funcion de mappeo
         (index_value) => index_value
       );
-      this.fActivation =
+      this.variables.fActivation =
       //Crea un nuevo arreglo basado en el objeto iterable que se proporcione.
       Array.from(
         {
           //Proporciona la longitud que tendra el nuevo arreglo
-          length: this.capa_selec,
+          length: this.variables.capa_selec,
         },
         //Funcion de mappeo
         (index_value) => index_value

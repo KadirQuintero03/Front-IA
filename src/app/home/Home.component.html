@@ -1,23 +1,15 @@
-<main
-  class="text-center flex flex-col justify-center items-center font-[Schoolbell]"
->
+<main class="text-center flex flex-col justify-center items-center font-[Schoolbell]">
   <app-header />
 
   <article class="flex gap-4 mt-4 w-[1000px]">
-    <div
-      class="flex flex-col gap-2 p-4 bg-[#000] bg-opacity-20 w-full rounded-lg"
-    >
+    <div class="flex flex-col gap-2 p-4 bg-[#000] bg-opacity-20 w-full rounded-lg">
       <label
-        class="w-full border-2 border-dashed rounded-lg cursor-pointer dark:hover:bg-bray-800 bg-black bg-opacity-20 border-gray-500"
-      >
+        class="w-full border-2 border-dashed rounded-lg cursor-pointer dark:hover:bg-bray-800 bg-black bg-opacity-20 border-gray-500">
         <h2 class="text-[#fff]">Carga tu banco de datos</h2>
         <div>
           <div class="w-full h-24 flex justify-center">
-            @if(dataCargada){
-            <img
-              src="https://www.thetechedvocate.org/wp-content/uploads/2023/05/xls.png"
-              alt=""
-            />
+            @if(variables.dataCargada){
+            <img src="https://www.thetechedvocate.org/wp-content/uploads/2023/05/xls.png" alt="" />
             }
           </div>
           <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
@@ -27,34 +19,24 @@
           <p class="text-xs text-white dark:text-gray-400">
             CARGAR UN ARCHIVO DE EXCEL (XLS)
           </p>
-          @if(dataCargada){
+          @if(variables.dataCargada){
           <span class="text-[#fff]">{{ params.variables.archivoName }}</span>
           }
         </div>
-        <input
-          id="dropzone-file"
-          (change)="get($event)"
-          type="file"
-          class="hidden"
-        />
+        <input id="dropzone-file" (change)="get($event)" type="file" class="hidden" />
       </label>
       <app-parametros-entrada />
     </div>
-    <div
-      class="text-white text-start gap-3 bg-black bg-opacity-20 w-full rounded-lg p-4"
-    >
+    <div class="text-white text-start gap-3 bg-black bg-opacity-20 w-full rounded-lg p-4">
       <app-config-rna />
     </div>
   </article>
 
-  <div
-    class="text-white text-start bg-black w-[1000px] bg-opacity-20 p-4 mt-4 rounded-lg"
-  >
+  <div class="text-white text-start bg-black w-[1000px] bg-opacity-20 p-4 mt-4 rounded-lg">
     <app-params-entrenamiento />
     <button
       class="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2"
-      (click)="probar()"
-    >
+      (click)="entrenamiento()">
       Entrenar
     </button>
   </div>
@@ -63,9 +45,7 @@
     <app-graphic />
   </div>
 
-  <div
-    class="text-white text-start w-[1000px] mt-4 bg-black bg-opacity-20 rounded-lg p-4"
-  >
+  <div class="text-white text-start w-[1000px] mt-4 bg-black bg-opacity-20 rounded-lg p-4">
     <app-simulacion />
   </div>
 
@@ -81,4 +61,6 @@
   </div> -->
 </main>
 <div class="bg-white h-96 w-96 absolute rounded-full opacity-5   pointer-events-none  -left-4 -top-4 blur-2xl"></div>
-<div class="bg-[#9135E4] pointer-events-none  h-96 w-96 absolute rounded-full opacity-5  top-[500px] right-2   blur-2xl"></div>
+<div
+  class="bg-[#9135E4] pointer-events-none  h-96 w-96 absolute rounded-full opacity-5  top-[500px] right-2   blur-2xl">
+</div>

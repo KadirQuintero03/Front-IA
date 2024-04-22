@@ -11,7 +11,7 @@ import { ParametrosEntradaComponent } from './pages/parametrosEntrada/parametros
 import { SimulacionComponent } from './pages/simulacion/simulacion.component';
 import { HeaderComponent } from '../shared/header/header.component';
 import { ParamsEntrenamientoComponent } from './pages/paramsEntrenamiento/paramsEntrenamiento.component';
-
+import { TrainingService } from '../services/socket.service';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -25,16 +25,15 @@ import { ParamsEntrenamientoComponent } from './pages/paramsEntrenamiento/params
     ParametrosEntradaComponent,
     SimulacionComponent,
     HeaderComponent,
-    ParamsEntrenamientoComponent
+    ParamsEntrenamientoComponent,
   ],
   templateUrl: './Home.component.html',
 })
 export default class HomeComponent {
   variables: variables = new variables();
   valueRange: number = 0;
-  ver_neurona: boolean = false;
-  dataCargada:boolean=false
 
+  constructor(private training: TrainingService) {}
   @ViewChild(ConfigRNAComponent)
   config!: ConfigRNAComponent;
 
@@ -78,22 +77,21 @@ export default class HomeComponent {
 
   get(event: any) {
     this.params.get(event);
-    this.ver_neurona = true;
-    this.dataCargada = true;
-    // console.log("name file home",this.params.variables.archivoName);
+    this.variables.ver_neurona = true;
+    this.variables.dataCargada = true;
   }
 
-  probar() {
+  entrenamiento() {
     console.log('numEntradas: ', this.params.variables.entradas);
     console.log('numSalidas: ', this.params.variables.salidas);
     console.log('numPatrones: ', this.params.variables.patrones);
     console.log('rata: ', this.paramsE.variables.rata_aprendizaje);
     console.log('error: ', this.paramsE.variables.error_maximo);
     console.log('iteraciones: ', this.paramsE.variables.num_iteraciones);
-    console.log('METODO PROBAR');
     console.log('w: ', this.params.variables.w);
     console.log('u: ', this.params.variables.u);
     console.log('Data home', this.params.variables.data);
+    console.log('algoritmo seleccionado: ', this.config.variables.algoritmo_selec)
 
     let data = {
       entradas: this.params.variables.data.entradas,
@@ -105,15 +103,28 @@ export default class HomeComponent {
       U: this.params.variables.u,
     };
 
-    entrenar(
-      data,
-      this.config.variables.rata_aprendizaje,
-      this.config.variables.error_maximo,
-      this.config.variables.num_iteraciones
-    );
+    if (this.config.variables.algoritmo_selec === 'Correccion de errores') {
+      entrenar(
+        data,
+        this.paramsE.variables.rata_aprendizaje,
+        this.paramsE.variables.error_maximo,
+        this.paramsE.variables.num_iteraciones
+      );
+    }
 
-    // this.config.Entrenamiento()
-    // console.log('variables', this.variables);
-    console.log(this.config.variables.algoritmo_selec);
+    if (this.config.variables.algoritmo_selec === 'Backpropagation') {
+      console.log('entro al if')
+      this.training.sendMessage({
+        iteracion: this.paramsE.variables.num_iteraciones,
+        errorMaximo: this.paramsE.variables.error_maximo,
+        rata: this.paramsE.variables.rata_aprendizaje,
+        data: data,
+      });
+      this.training.entrenamiento().subscribe((response)=>{
+        console.log("datos cokets",response);
+
+
+      })
+    }
   }
 }

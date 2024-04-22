@@ -16,12 +16,18 @@ export class variables {
   algoritmo_selec: String = ''; //Almacena el valor del algoritmo seleccionado
   archivo: File | null = null; //Almacena el archivo que se carga
   archivoName: string='';
+  ver_neurona: boolean = false;
+  dataCargada: boolean = false;
 
   //variables del algoritmo02
   func_Activacion: String[] = ['Tangente', 'Sigmoide', 'Seno', 'Lineal','Gausiana'];
   func_Act_Select: String[] = [];
   capa: Number[] = [1, 2, 3];
-  ver_neurona: boolean = false;
+  capa_selec: number = 0; // Almacenara el valor del select
+  num_capa: any[] = []; // Contendra un N°Elemento según el valor que se seleccione en el select
+  capasNeu: any[] = [];
+  fActivation: any[] = [];
+  func_capa_salida = ''
 }
 
 //variables del algoritmo01

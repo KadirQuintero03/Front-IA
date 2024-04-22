@@ -8,7 +8,7 @@
     class="p-2 bg-[#1D1D1D] border-solid border-[#ffff] rounded-lg outline-none"
     name=""
     id=""
-    [(ngModel)]="capa_selec"
+    [(ngModel)]="variables.capa_selec"
     (change)="actualizarLista()"
   >
     <option value="" *ngFor="let item of variables.capa" [value]="item">
@@ -16,19 +16,19 @@
     </option>
   </select>
 
-  @for (item of num_capa; track $index) {
+  @for (item of variables.num_capa; track $index) {
   <div class="flex gap-2">
     <input
       class="p-2 rounded-lg bg-[#1D1D1D] w-full border border-[#ffff]"
       type="number"
-      [(ngModel)]="num_capa[$index]"
+      [(ngModel)]="variables.num_capa[$index]"
       placeholder="numero neuronas capa: {{ $index + 1 }}"
     />
     <select
       class="p-2 bg-[#1D1D1D] border border-[#ffff] rounded-lg outline-none"
       name=""
       id=""
-      [(ngModel)]="fActivation[$index]"
+      [(ngModel)]="variables.fActivation[$index]"
     >
       <option *ngFor="let item of variables.func_Activacion">{{ item }}</option>
     </select>
@@ -38,12 +38,14 @@
 
   <p class="text-lg">Funcion de activacion capa de salida</p>
   <select
-    class="p-2 bg-[#1D1D1D] border border-[#ffff] rounded-lg outline-none"
+    class="p-2 bg-[#1D1D1D] border-solid border-[#ffff] rounded-lg outline-none"
     name=""
     id=""
-    [(ngModel)]="variables"
+    [(ngModel)]="variables.func_capa_salida"
   >
-    <option></option>
+    <option *ngFor="let item of variables.func_Activacion" value="{{ item }}">
+      {{ item }}
+    </option>
   </select>
 
   <p class="text-lg">Seleccione un algoritmo de entrenamiento</p>
