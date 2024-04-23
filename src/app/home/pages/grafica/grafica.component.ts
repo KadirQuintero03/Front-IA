@@ -24,7 +24,7 @@ export class graficaComponent implements OnInit {
     this.training.entrenamiento().subscribe((response) => {
       // Agrega los datos recibidos a la serie de la gráfica
       this.datosGrafica.push(response.error);
-      this.datosIt.push(response.iteraciones)
+      this.datosIt.push(response.iteracion)
       console.log("iteraciones",this.datosIt);
 
 
