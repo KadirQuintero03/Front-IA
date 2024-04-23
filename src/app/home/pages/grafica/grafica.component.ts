@@ -13,7 +13,7 @@ import { TrainingService } from '../../../services/socket.service';
 })
 export class graficaComponent implements OnInit {
   datosGrafica: any[] = [];
-  datosIt:any[]=[]
+  datosIt: any[] = [];
 
   @ViewChild('chart') chart!: ChartComponent;
   public chartOptions: Partial<ChartOptions> = {};
@@ -24,9 +24,8 @@ export class graficaComponent implements OnInit {
     this.training.entrenamiento().subscribe((response) => {
       // Agrega los datos recibidos a la serie de la gráfica
       this.datosGrafica.push(response.error);
-      this.datosIt.push(response.iteracion)
-      console.log("iteraciones",this.datosIt);
-
+      this.datosIt.push(response.iteracion);
+      console.log('iteraciones: ', this.datosIt, 'error: ',this.datosGrafica);
 
       // Actualiza la gráfica con los nuevos datos
       this.updateChart();
@@ -37,7 +36,7 @@ export class graficaComponent implements OnInit {
         const elementosEliminar = this.datosGrafica.length - 20;
         // Elimina los datos más antiguos de la gráfica
         this.datosGrafica.splice(0, elementosEliminar);
-        this.datosIt.shift()
+        this.datosIt.shift();
       }
     });
 
