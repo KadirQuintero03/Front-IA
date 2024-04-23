@@ -113,7 +113,7 @@ export default class HomeComponent {
     }
 
     if (this.config.variables.algoritmo_selec === 'Backpropagation') {
-      console.log('entro al if')
+      // console.log('entro al if')
       this.training.sendMessage({
         iteracion: this.paramsE.variables.num_iteraciones,
         errorMaximo: this.paramsE.variables.error_maximo,
@@ -121,9 +121,7 @@ export default class HomeComponent {
         data: data,
       });
       this.training.entrenamiento().subscribe((response)=>{
-        console.log("datos cokets",response);
-
-
+        // console.log("datos sockets",response);
       })
     }
   }

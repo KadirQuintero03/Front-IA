@@ -1,10 +1,8 @@
 // import { Data, FuncionParametro } from "../interfaces/interfaceData";
-import { HttpClient } from '@angular/common/http';
 import { Data } from '../interface/variables';
 import { generarValoresAleatorios } from '../libs/generarWyU';
 import { GuardarPesos } from '../libs/guardarPesos';
 import { mostrar, ObjetoXY } from './data_Charts';
-import { FileService } from '../services/File.service';
 export function entrenar(
   data: Data,
   rata: number,

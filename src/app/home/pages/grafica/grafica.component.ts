@@ -1,44 +1,43 @@
 import { CommonModule } from '@angular/common';
-import { Component, ViewChild, Injectable } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { NgApexchartsModule } from 'ng-apexcharts';
-import { HttpClientModule } from '@angular/common/http';
 import { ChartComponent } from 'ng-apexcharts';
-import { FormsModule } from '@angular/forms';
 import { ChartOptions, yaxis } from '../../../utils/type_Charts';
 import { north, arrayObjetos } from '../../../utils/data_Charts';
+import { TrainingService } from '../../../services/socket.service';
 
 @Component({
   selector: 'app-graphic',
   standalone: true,
-  imports: [
-    CommonModule,
-    RouterModule,
-    NgApexchartsModule,
-    HttpClientModule,
-    FormsModule,
-  ],
+  imports: [CommonModule, NgApexchartsModule],
   templateUrl: './grafica.component.html',
 })
 
-@Injectable({
-  providedIn: 'root', // Esto proporciona la instancia globalmente
-})
+export class graficaComponent implements OnInit {
+  datosGrafica: any[] = [];
 
-export class graficaComponent {
+  ngOnInit(): void {
+    this.training.entrenamiento().subscribe((response) => {
+      // Actualiza los datos de la serie de la gráfica
+      this.iteraciones = response;
+      this.datosGrafica.push(response.error);
+      this.datosGrafica.push(response.error);
+      console.log('datos grafica', this.datosGrafica);
+
+      // this.chartOptions.series = [{ name: 'Error', data: this.iteraciones }];
+      return response.error;
+      // Verifica si la gráfica está inicializada antes de actualizar
+    });
+  }
+
   @ViewChild('chart') chart!: ChartComponent;
   public chartOptions: Partial<ChartOptions>;
-  iteraciones: any;
+  iteraciones: any[] = []; // Inicializa iteraciones como un array vacío
+  chartInitialized: boolean = false;
 
-  constructor() {
-    this.iteraciones = arrayObjetos;
+  constructor(private training: TrainingService) {
     this.chartOptions = {
-      series: [
-        {
-          name: 'Error',
-          data: this.iteraciones,
-        },
-      ],
+      series: [{ name: 'Error', data: [] }],
       chart: {
         type: 'area',
         height: 270,
@@ -52,7 +51,6 @@ export class graficaComponent {
       },
 
       title: {
-        //text: 'Area with Negative Values',
         align: 'left',
         style: {
           color: 'white',
@@ -67,7 +65,7 @@ export class graficaComponent {
           show: false,
         },
       },
-      yaxis: yaxis,
+      // Aquí defines yaxis según tus necesidades, asumo que ya está definido en tu código
       fill: {
         opacity: 0.5,
       },
@@ -92,5 +90,4 @@ export class graficaComponent {
       },
     };
   }
-  
 }
