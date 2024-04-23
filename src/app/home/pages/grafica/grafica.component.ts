@@ -2,8 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { ChartComponent } from 'ng-apexcharts';
-import { ChartOptions, yaxis } from '../../../utils/type_Charts';
-import { north, arrayObjetos } from '../../../utils/data_Charts';
+import { ChartOptions } from '../../../utils/type_Charts';
 import { TrainingService } from '../../../services/socket.service';
 
 @Component({
@@ -12,32 +11,39 @@ import { TrainingService } from '../../../services/socket.service';
   imports: [CommonModule, NgApexchartsModule],
   templateUrl: './grafica.component.html',
 })
-
 export class graficaComponent implements OnInit {
   datosGrafica: any[] = [];
+  datosIt:any[]=[]
+
+  @ViewChild('chart') chart!: ChartComponent;
+  public chartOptions: Partial<ChartOptions> = {};
+
+  constructor(private training: TrainingService) {}
 
   ngOnInit(): void {
     this.training.entrenamiento().subscribe((response) => {
-      // Actualiza los datos de la serie de la gráfica
-      this.iteraciones = response;
+      // Agrega los datos recibidos a la serie de la gráfica
       this.datosGrafica.push(response.error);
-      this.datosGrafica.push(response.error);
-      console.log('datos grafica', this.datosGrafica);
+      this.datosIt.push(response.iteraciones)
+      console.log("iteraciones",this.datosIt);
 
-      // this.chartOptions.series = [{ name: 'Error', data: this.iteraciones }];
-      return response.error;
-      // Verifica si la gráfica está inicializada antes de actualizar
+
+      // Actualiza la gráfica con los nuevos datos
+      this.updateChart();
+
+      // Verifica si superamos el número máximo de iteraciones permitidas
+      if (this.datosGrafica.length > 20) {
+        // Calcula la cantidad de elementos a eliminar
+        const elementosEliminar = this.datosGrafica.length - 20;
+        // Elimina los datos más antiguos de la gráfica
+        this.datosGrafica.splice(0, elementosEliminar);
+        this.datosIt.shift()
+      }
     });
-  }
 
-  @ViewChild('chart') chart!: ChartComponent;
-  public chartOptions: Partial<ChartOptions>;
-  iteraciones: any[] = []; // Inicializa iteraciones como un array vacío
-  chartInitialized: boolean = false;
-
-  constructor(private training: TrainingService) {
+    // Configura las opciones de la gráfica
     this.chartOptions = {
-      series: [{ name: 'Error', data: [] }],
+      series: [{ name: 'Error', data: this.datosGrafica }],
       chart: {
         type: 'area',
         height: 270,
@@ -49,7 +55,6 @@ export class graficaComponent implements OnInit {
       stroke: {
         curve: 'straight',
       },
-
       title: {
         align: 'left',
         style: {
@@ -58,6 +63,7 @@ export class graficaComponent implements OnInit {
         },
       },
       xaxis: {
+        categories: this.datosIt,
         axisBorder: {
           show: false,
         },
@@ -65,7 +71,6 @@ export class graficaComponent implements OnInit {
           show: false,
         },
       },
-      // Aquí defines yaxis según tus necesidades, asumo que ya está definido en tu código
       fill: {
         opacity: 0.5,
       },
@@ -89,5 +94,17 @@ export class graficaComponent implements OnInit {
         },
       },
     };
+  }
+
+  // Función para actualizar la gráfica con los datos actualizados
+  updateChart(): void {
+    // Actualiza las opciones de la gráfica con los nuevos datos
+    this.chart.updateOptions(
+      {
+        series: [{ name: 'Error', data: this.datosGrafica }],
+        xaxis: { categories: this.datosIt },
+      },
+      true
+    );
   }
 }

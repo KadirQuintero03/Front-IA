@@ -7,12 +7,13 @@ interface Idata{
   errorMaximo:number,
   data:any
   }
+  
 @Injectable({
   providedIn: 'root',
 })
 
 export class TrainingService {
-  private socket = io('https://sockets-and-ia.onrender.com');
+  private socket = io('https://9rsknq83-4000.use.devtunnels.ms/');
 
   sendMessage(data: Idata) {
     console.log("data a graficar",data);
