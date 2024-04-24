@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, Injectable, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FileService } from '../../../services/File.service';
 import { variables } from '../../../interface/variables';
@@ -12,9 +12,7 @@ import HomeComponent from '../../Home.component';
   templateUrl: './parametrosEntrada.component.html',
   //styleUrl: './parametrosEntrada.component.css',
 })
-@Injectable({
-  providedIn: 'root', // Esto proporciona la instancia globalmente
-})
+
 export class ParametrosEntradaComponent {
   algoritmo_selec: String = ''; //Almacena el valor del algoritmo que se selecciono
   mostrarsalida: boolean = false;
@@ -29,8 +27,7 @@ export class ParametrosEntradaComponent {
     //Almacenamos el archivo en una variable.
     this.variables.archivo = event.target.files[0];
     this.variables.archivoName = event.target.files[0].name;
-    console.log("ARCHIVO", this.variables.archivoName);
-
+    // console.log("ARCHIVO", this.variables.archivoName);
 
     this.fileServices.mostrar(this.variables.archivo, this.http).subscribe(
       (response) => {
@@ -45,9 +42,9 @@ export class ParametrosEntradaComponent {
         };
         this.home.Draw(this.variables.entradas, this.variables.salidas);
         this.variables.ver_neurona = true;
-        console.log('w: ', this.variables.w);
-        console.log('u: ', this.variables.u);
-        console.log('data: ', this.variables.data);
+        // console.log('w: ', this.variables.w);
+        // console.log('u: ', this.variables.u);
+        // console.log('data: ', this.variables.data);
       },
       (error) => {
         console.error('Error al cargar el archivo:', error);

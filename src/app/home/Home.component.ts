@@ -28,7 +28,6 @@ import { TrainingService } from '../services/socket.service';
 })
 export default class HomeComponent {
   variables: variables = new variables();
-  valueRange: number = 0;
 
   constructor(private training: TrainingService) {}
   @ViewChild(ConfigRNAComponent)
@@ -42,28 +41,28 @@ export default class HomeComponent {
 
   @ViewChild('Neurona', { static: false }) canvasRef!: ElementRef;
 
-  Draw(en: number, sa: number): void {
+  Draw(numNeuronasEntreada: number, numNeuronasSalida: number): void {
     const canvas = this.canvasRef.nativeElement;
     const ctx = canvas.getContext('2d');
 
     ctx.strokeStyle = 'white'; // Establece el color de trazo
     ctx.fillStyle = 'white'; //Establece el color de relleno
 
-    for (let i = 0; i < en; i++) {
+    for (let i = 0; i < numNeuronasEntreada; i++) {
       ctx.beginPath();
       ctx.arc(50, 50 * (i + 1), 20, 0, 2 * Math.PI); // Dibuja un círculo
       ctx.fill(); // Rellena el círculo
     }
 
-    for (let i = 0; i < sa; i++) {
+    for (let i = 0; i < numNeuronasSalida; i++) {
       ctx.beginPath();
       ctx.arc(150, 50 * (i + 1), 20, 0, 2 * Math.PI); // Dibuja un círculo
       ctx.fill(); // Rellena el círculo
     }
 
     // Conecta cada esfera de entrada con cada esfera de salida
-    for (let i = 0; i < en; i++) {
-      for (let j = 0; j < sa; j++) {
+    for (let i = 0; i < numNeuronasEntreada; i++) {
+      for (let j = 0; j < numNeuronasSalida; j++) {
         ctx.beginPath();
         ctx.moveTo(50, 50 * (i + 1)); // Punto de inicio en la esfera de entrada
         ctx.lineTo(150, 50 * (j + 1)); // Punto final en la esfera de salida
@@ -110,12 +109,6 @@ export default class HomeComponent {
         rata: this.paramsE.variables.rata_aprendizaje,
         data: data,
       });
-      this.training.entrenamiento().subscribe((response) => {
-        // console.log("datos sockets",response);
-      });
-    }
-
-    if (this.config.variables.algoritmo_selec === 'Backpropagation') {
     }
   }
 }

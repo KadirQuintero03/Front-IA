@@ -6,10 +6,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-params-entrenamiento',
   standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule
-  ],
+  imports: [CommonModule, FormsModule],
   templateUrl: './paramsEntrenamiento.component.html',
   styles: ``,
 })
