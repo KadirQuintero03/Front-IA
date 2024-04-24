@@ -22,21 +22,3 @@ export type ChartOptions = {
   title: ApexTitleSubtitle;
   grid: ApexGrid;
 };
-export const yaxis = {
-  tickAmount: 4,
-  floating: false,
-
-  labels: {
-    style: {
-      colors: '#8e8da4',
-    },
-    offsetY: -7,
-    offsetX: 0,
-  },
-  axisBorder: {
-    show: false,
-  },
-  axisTicks: {
-    show: false,
-  },
-};
