@@ -13,11 +13,6 @@ export class FileService {
     formData.append('file', archivo, archivo.name);
     const url = 'https://sensor-ia-eqnq.onrender.com/file';
 
-    // Retornar el Observable resultante de la solicitud HTTP
     return http.post(url, formData);
   }
-  // enviar(data: pesosType): Observable<any> {
-  //   const url = 'https://sensor-ia-eqnq.onrender.com/save';
-  //   return this.http.post(url, data);
-  // }
 }

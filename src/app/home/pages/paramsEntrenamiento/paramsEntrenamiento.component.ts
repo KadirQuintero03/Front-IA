@@ -15,5 +15,4 @@ import { FormsModule } from '@angular/forms';
 })
 export class ParamsEntrenamientoComponent {
   variables: variables = new variables();
-
 }

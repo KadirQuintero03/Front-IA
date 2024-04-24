@@ -1,6 +1,4 @@
-
 export function GuardarPesos(w: number[][], u: number[]) {
-
   try {
     const pesos = JSON.stringify(w);
     localStorage.setItem('w', pesos);

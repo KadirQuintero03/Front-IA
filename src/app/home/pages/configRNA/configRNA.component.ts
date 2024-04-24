@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { variables } from '../../../interface/variables';
 import { FormsModule } from '@angular/forms';
-import { entrenar } from '../../../utils/algoritmo01';
 
 @Component({
   selector: 'app-config-rna',
